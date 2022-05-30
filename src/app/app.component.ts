@@ -11,21 +11,21 @@ export class AppComponent {
 
   bottone: ButtonConfig = {
     css: "btn btn-primary",
-    text:"Testing 1",
+    text:"Modifica",
     type:"button"
   };
 
   bottone2: ButtonConfig = {
     css: "btn btn-success",
-    text:"Testing 2",
+    text:"Aggiungi",
     type:"button"
   };
 
-  test1(): void {
-    console.log("Funzione 1");
+  testModifica(text: string) {
+    console.log("Premuto il tasto: ", text);
   }
 
-  test2(): void {
-    console.log("Funzione 2");
+  testAggiungi(text: string) {
+    console.log("Premuto il tasto: ", text);
   }
 }

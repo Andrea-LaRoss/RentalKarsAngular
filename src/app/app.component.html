@@ -1,3 +1,3 @@
 <app-header></app-header>
-<app-configurable-button [config]="bottone2" (click)="test2()"></app-configurable-button>
-<app-configurable-button [config]="bottone"  (click)="test1()"></app-configurable-button>
+<app-configurable-button [config]="bottone2" (generalEvent)="testModifica($event)"></app-configurable-button>
+<app-configurable-button [config]="bottone" (generalEvent)="testAggiungi($event)"></app-configurable-button>

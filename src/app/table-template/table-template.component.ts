@@ -7,9 +7,9 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class TableTemplateComponent implements OnInit {
 
-  @Input() tableConfig: any; //tableConfiguration
+  @Input() tableConfig: any; // cambiare con l'oggetto tableConfiguration(da creare)
 
-  @Input() data: any[];
+  @Input() data?: any[];
 
   constructor() { }
 

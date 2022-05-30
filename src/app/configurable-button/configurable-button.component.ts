@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { ButtonConfig } from "../button-config";
 
 @Component({
@@ -17,6 +17,12 @@ export class ConfigurableButtonComponent implements OnInit {
     type: ""
   };
 
+  @Output() generalEvent = new EventEmitter();
+
   ngOnInit(): void {
+  }
+
+  printLog() {
+    this.generalEvent.emit(this.config.text)
   }
 }
