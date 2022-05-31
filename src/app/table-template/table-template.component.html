@@ -2,6 +2,7 @@
   <tr>
     <th *ngFor="let header of tableConfig.headers">{{header.label}}</th>
   </tr>
-  <tr *ngFor="let header of tableConfig.headers">
+  <tr *ngFor="let d of data">
+    <td *ngFor="let header of tableConfig.headers">{{header.key}}</td>
   </tr>
 </table>
