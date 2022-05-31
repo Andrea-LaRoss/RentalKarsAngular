@@ -18,8 +18,8 @@ export class TableTemplateComponent implements OnInit {
     console.log(this.data);
   }
 
-  printLog(): void {
-    console.log(this.data);
+  printLog(d: any): void {
+    console.log(d);
   }
 
 }

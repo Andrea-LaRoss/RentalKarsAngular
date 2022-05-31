@@ -3,7 +3,8 @@
     <th *ngFor="let header of tableConfig.headers">{{header.label}}</th>
   </tr>
   <tr *ngFor="let d of data">
-    <td *ngFor="let header of tableConfig.headers">{{d.values}}</td>
+    <td *ngFor="let header of tableConfig.headers">{{d}}</td>
+    <button type="button" (click)="printLog(d)">Console log</button>
   </tr>
 </table>
-<button type="button" (click)="printLog()">Console log</button>
+
