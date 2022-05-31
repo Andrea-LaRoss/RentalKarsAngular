@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import {ButtonConfig} from "./button-config";
+import {TableHeaders} from "./table-headers";
+import {TableConfig} from "./table-config";
 
 @Component({
   selector: 'app-root',
@@ -28,4 +30,24 @@ export class AppComponent {
   testAggiungi(text: string) {
     console.log("Premuto il tasto: ", text);
   }
+
+  headersTabella1: TableHeaders[] = [
+    {key: "1", label: "Nome"},
+    {key: "2", label: "Cognome"}
+  ];
+
+  headersTabella2: TableHeaders[] = [
+    {key: "3", label: "Marca"},
+    {key: "4", label: "Modello"}
+  ];
+
+
+  tabella1: TableConfig = {
+    headers: this.headersTabella1
+  };
+
+  tabella2: TableConfig = {
+    headers: this.headersTabella2
+  };
+
 }

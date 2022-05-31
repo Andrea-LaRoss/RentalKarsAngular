@@ -11,11 +11,7 @@ export class ConfigurableButtonComponent implements OnInit {
 
   constructor() { }
 
-  @Input() config: ButtonConfig = {
-    css: "",
-    text: "",
-    type: ""
-  };
+  @Input() config!: ButtonConfig;
 
   @Output() generalEvent = new EventEmitter();
 

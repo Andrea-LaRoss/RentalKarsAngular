@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {TableConfig} from "../table-config";
 
 @Component({
   selector: 'app-table-template',
@@ -7,7 +8,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class TableTemplateComponent implements OnInit {
 
-  @Input() tableConfig: any; // cambiare con l'oggetto tableConfiguration(da creare)
+  @Input() tableConfig!: TableConfig;
 
   @Input() data?: any[];
 
