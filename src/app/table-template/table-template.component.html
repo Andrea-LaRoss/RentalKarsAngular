@@ -1,9 +1,8 @@
 <table border="1">
+  <div *ngFor="let header of tableConfig.headers">
   <tr>
-    <th *ngFor="let header of tableConfig.headers">{{header.label}}</th>
+    <th>{{header.label}}</th>
+    <td *ngFor="let d of data">{{d[]}}</td>
   </tr>
-  <tr *ngFor="let datas of data">
-    <td>{{datas.firstName}}</td>
-    <td>{{datas.lastName}}</td>
-  </tr>
+  </div>
 </table>

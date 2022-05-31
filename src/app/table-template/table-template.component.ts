@@ -10,7 +10,7 @@ export class TableTemplateComponent implements OnInit {
 
   @Input() tableConfig!: TableConfig;
 
-  @Input() data!: any[];
+  @Input() data?: any[];
 
   constructor() { }
 

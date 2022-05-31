@@ -2,15 +2,17 @@ import { Component } from '@angular/core';
 import {ButtonConfig} from "./button-config";
 import {TableHeaders} from "./table-headers";
 import {TableConfig} from "./table-config";
-import {User} from "./user";
+import { USERS } from "./mock-users";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
   title = 'RentalKars';
+  users = USERS;
 
   bottone: ButtonConfig = {
     css: "btn btn-primary",
@@ -33,15 +35,15 @@ export class AppComponent {
   }
 
   headersTabella1: TableHeaders[] = [
-    {key: "1", label: "Nome"},
-    {key: "2", label: "Cognome"}
+    {key: "email", label: "Email"},
+    {key: "firstName", label: "Nome"},
+    {key: "lastName", label: "Cognome"}
   ];
 
   headersTabella2: TableHeaders[] = [
-    {key: "3", label: "Marca"},
-    {key: "4", label: "Modello"}
+    {key: "brand", label: "Marca"},
+    {key: "model", label: "Modello"}
   ];
-
 
   tabella1: TableConfig = {
     headers: this.headersTabella1
@@ -51,21 +53,4 @@ export class AppComponent {
     headers: this.headersTabella2
   };
 
-  datiTest1: User[] = [
-    {id: 1,
-    email: "test@test.com",
-    password: "",
-    firstName: "Andrea",
-    lastName: "La Rosa"},
-    {id: 1,
-      email: "test@test.com",
-      password: "",
-      firstName: "Andrea",
-      lastName: "La Rosa"},
-    {id: 1,
-      email: "test@test.com",
-      password: "",
-      firstName: "Andrea",
-      lastName: "La Rosa"},
-  ];
 }
