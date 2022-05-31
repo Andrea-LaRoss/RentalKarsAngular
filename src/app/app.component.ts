@@ -4,6 +4,7 @@ import {TableHeaders} from "./table-headers";
 import {TableConfig} from "./table-config";
 import { USERS } from "./mock-users";
 import { CARS } from "./mock-cars";
+import {OrderTable} from "./order-table";
 
 @Component({
   selector: 'app-root',
@@ -16,13 +17,13 @@ export class AppComponent {
   users = USERS;
   cars = CARS;
 
-  bottone: ButtonConfig = {
+  modifica: ButtonConfig = {
     css: "btn btn-primary",
     text: "Modifica",
     type: "button"
   };
 
-  bottone2: ButtonConfig = {
+  aggiungi: ButtonConfig = {
     css: "btn btn-success",
     text: "Aggiungi",
     type: "button"
@@ -36,25 +37,35 @@ export class AppComponent {
     console.log("Premuto il tasto: ", text);
   }
 
-  headersTabella1: TableHeaders[] = [
+  headersUtenti: TableHeaders[] = [
     {key: "email", label: "Email"},
     {key: "firstName", label: "Nome"},
     {key: "lastName", label: "Cognome"}
   ];
 
-  headersTabella2: TableHeaders[] = [
+  headersAuto: TableHeaders[] = [
     {key: "brand", label: "Marca"},
     {key: "model", label: "Modello"},
     {key: "type", label: "Tipo"},
     {key: "numPlate", label: "Targa"}
   ];
 
-  tabella1: TableConfig = {
-    headers: this.headersTabella1
+  orderUtenti: OrderTable = {
+    defaultColumn: "firstName",
+    orderType: "asc"
+  }
+
+  orderAuto: OrderTable = {
+    defaultColumn: "numPlate",
+    orderType: "asc"
+  }
+
+  utenti: TableConfig = {
+    headers: this.headersUtenti,
   };
 
-  tabella2: TableConfig = {
-    headers: this.headersTabella2
+  auto: TableConfig = {
+    headers: this.headersAuto,
   };
 
 }
