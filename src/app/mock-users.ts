@@ -2,11 +2,11 @@ import { User } from './user';
 
 export const USERS: User[] = [
 
-  {email: "test@test.com", password: "", firstName: "Andrea", lastName: "La Rosa"},
-  {email: "aldogiovanni@outlook.it", password: "", firstName: "John", lastName: "Pieri"},
-  {email: "egiacomo@hotmail.com", password: "", firstName: "Al", lastName: "Bauli"},
-  {email: "theripper@gmail.com", password: "", firstName: "Jack", lastName: "Raiden"},
-  {email: "user@mock.com", password: "", firstName: "Mock", lastName: "User"},
-  {email: "bridges@unites.com", password: "", firstName: "Sam", lastName: "Porter"},
+  {email: "test@test.com", firstName: "Andrea", lastName: "La Rosa", password: ""},
+  {email: "aldogiovanni@outlook.it", firstName: "John", lastName: "Pieri", password: ""},
+  {email: "egiacomo@hotmail.com", firstName: "Al", lastName: "Bauli", password: ""},
+  {email: "theripper@gmail.com", firstName: "Jack", lastName: "Raiden", password: ""},
+  {email: "user@mock.com", firstName: "Mock", lastName: "User", password: ""},
+  {email: "bridges@unites.com", firstName: "Sam", lastName: "Porter", password: ""},
 
 ];

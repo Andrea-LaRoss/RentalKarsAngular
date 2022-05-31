@@ -1,4 +1,4 @@
 export class TableHeaders {
-  key?: string;
-  label?: string;
+  key!: string;
+  label!: string;
 }

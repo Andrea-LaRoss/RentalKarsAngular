@@ -18,14 +18,14 @@ export class AppComponent {
 
   bottone: ButtonConfig = {
     css: "btn btn-primary",
-    text:"Modifica",
-    type:"button"
+    text: "Modifica",
+    type: "button"
   };
 
   bottone2: ButtonConfig = {
     css: "btn btn-success",
-    text:"Aggiungi",
-    type:"button"
+    text: "Aggiungi",
+    type: "button"
   };
 
   testModifica(text: string) {

@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {TableConfig} from "../table-config";
+import { Component, Input, OnInit } from '@angular/core';
+import { TableConfig } from "../table-config";
+import { User } from "../user";
 
 @Component({
   selector: 'app-table-template',
@@ -10,16 +11,13 @@ export class TableTemplateComponent implements OnInit {
 
   @Input() tableConfig!: TableConfig;
 
-  @Input() data?: any[];
+  @Input() data?: any[] = [];
 
   constructor() { }
 
   ngOnInit(): void {
     console.log(this.data);
-  }
-
-  printLog(d: any): void {
-    console.log(d);
+    console.log(this.tableConfig)
   }
 
 }
