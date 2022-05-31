@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {ButtonConfig} from "./button-config";
 import {TableHeaders} from "./table-headers";
 import {TableConfig} from "./table-config";
+import {User} from "./user";
 
 @Component({
   selector: 'app-root',
@@ -50,4 +51,21 @@ export class AppComponent {
     headers: this.headersTabella2
   };
 
+  datiTest1: User[] = [
+    {id: 1,
+    email: "test@test.com",
+    password: "",
+    firstName: "Andrea",
+    lastName: "La Rosa"},
+    {id: 1,
+      email: "test@test.com",
+      password: "",
+      firstName: "Andrea",
+      lastName: "La Rosa"},
+    {id: 1,
+      email: "test@test.com",
+      password: "",
+      firstName: "Andrea",
+      lastName: "La Rosa"},
+  ];
 }

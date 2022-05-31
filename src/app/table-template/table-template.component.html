@@ -1,3 +1,9 @@
-<table>
-  <th *ngFor="let header of tableConfig.headers">{{header.label}}</th>
+<table border="1">
+  <tr>
+    <th *ngFor="let header of tableConfig.headers">{{header.label}}</th>
+  </tr>
+  <tr *ngFor="let datas of data">
+    <td>{{datas.firstName}}</td>
+    <td>{{datas.lastName}}</td>
+  </tr>
 </table>
