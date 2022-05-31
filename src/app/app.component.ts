@@ -3,6 +3,7 @@ import {ButtonConfig} from "./button-config";
 import {TableHeaders} from "./table-headers";
 import {TableConfig} from "./table-config";
 import { USERS } from "./mock-users";
+import { CARS } from "./mock-cars";
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,7 @@ import { USERS } from "./mock-users";
 export class AppComponent {
   title = 'RentalKars';
   users = USERS;
+  cars = CARS;
 
   bottone: ButtonConfig = {
     css: "btn btn-primary",
@@ -42,7 +44,9 @@ export class AppComponent {
 
   headersTabella2: TableHeaders[] = [
     {key: "brand", label: "Marca"},
-    {key: "model", label: "Modello"}
+    {key: "model", label: "Modello"},
+    {key: "type", label: "Tipo"},
+    {key: "numPlate", label: "Targa"}
   ];
 
   tabella1: TableConfig = {
