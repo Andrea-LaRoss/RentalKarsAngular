@@ -62,10 +62,12 @@ export class AppComponent {
 
   utenti: TableConfig = {
     headers: this.headersUtenti,
+    order: this.orderUtenti
   };
 
   auto: TableConfig = {
     headers: this.headersAuto,
+    order: this.orderAuto
   };
 
 }

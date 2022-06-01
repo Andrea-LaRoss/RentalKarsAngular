@@ -1,6 +1,8 @@
 <table border="1">
   <tr>
-    <th *ngFor="let header of tableConfig.headers" (click)="changeOrder(data, header.key, orderType)" >{{header.label}}</th>
+    <th *ngFor="let header of tableConfig.headers" (click)="changeOrder(data, header.key, orderType)" >{{header.label}}
+      <i [ngClass]="[orderType === 'asc' ? 'bi bi-arrow-down-short' : 'bi bi-arrow-up-short']"></i>
+    </th>
   </tr>
   <tr *ngFor="let d of data">
     <td *ngFor="let h of tableConfig.headers">{{d[h.key]}}</td>

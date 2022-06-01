@@ -12,21 +12,21 @@ export class TableTemplateComponent implements OnInit {
 
   @Input() data!: any[];
 
-  orderType: string = "ascending";
+  orderType: string = "asc";
 
   constructor() { }
 
   ngOnInit(): void {
-    this.changeOrder(this.data, "", "");
+    this.changeOrder(this.data, this.tableConfig.order.defaultColumn, this.tableConfig.order.orderType);
   }
 
   changeOrder(list: any[], key: string, orderType: string): void {
-    if(orderType == "ascending"){
-      this.orderType = "descending"
-      list.sort(this.compareValues(key, "desc"));
+    if(orderType == "asc"){
+      this.orderType = "desc"
+      list.sort(this.compareValues(key, orderType));
     } else {
-      this.orderType = "ascending";
-      list.sort(this.compareValues(key, "asc"));
+      this.orderType = "asc";
+      list.sort(this.compareValues(key, orderType));
     }
   }
 

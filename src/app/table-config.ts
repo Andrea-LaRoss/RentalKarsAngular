@@ -4,5 +4,6 @@ import {OrderTable} from "./order-table";
 export class TableConfig {
 
   headers!: TableHeaders[];
+  order!: OrderTable
 
 }
