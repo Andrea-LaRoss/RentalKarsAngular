@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { ConfigurableButtonComponent } from './configurable-button/configurable-button.component';
 import { HeaderComponent } from './header/header.component';
 import { TableTemplateComponent } from './table-template/table-template.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -13,9 +14,10 @@ import { TableTemplateComponent } from './table-template/table-template.componen
     HeaderComponent,
     TableTemplateComponent
   ],
-  imports: [
-    BrowserModule
-  ],
+    imports: [
+        BrowserModule,
+        FormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -1,4 +1,4 @@
-import { Component, Input, ElementRef, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { TableConfig } from "../table-config";
 
 @Component({
@@ -53,8 +53,22 @@ export class TableTemplateComponent implements OnInit {
     };
   }
 
-  search(x: any) {
-    console.log(x.target.value);
+  search(input: any, columns: any, list: any[]): any[] {
+    const value = input.target.value;
+    const filteredList: any = [];
+    console.log(filteredList);
+    for (let i = 0; i < list.length; i++) {
+      for(let j = 0; j < columns.length; j++) {
+        if(list[i][columns[j]].toLowerCase().includes(value)){
+          filteredList.push(list[i]);
+        }
+      }
+    }
+    if(filteredList.length > 0 ) {
+      return filteredList;
+    } else {
+      return list;
+    }
   }
 
 }
