@@ -33,7 +33,6 @@ export class TableTemplateComponent implements OnInit {
   compareValues(key: string, order: string) {
     return function innerSort(a: any, b: any) {
       if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
-        // property doesn't exist on either object
         return 0;
       }
 
@@ -52,6 +51,10 @@ export class TableTemplateComponent implements OnInit {
         (order === 'desc') ? (comparison * -1) : comparison
       );
     };
+  }
+
+  search(x: any) {
+    console.log(x.target.value);
   }
 
 }

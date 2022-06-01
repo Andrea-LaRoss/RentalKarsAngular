@@ -5,6 +5,7 @@ import {TableConfig} from "./table-config";
 import { USERS } from "./mock-users";
 import { CARS } from "./mock-cars";
 import {OrderTable} from "./order-table";
+import {SearchParams} from "./search-params";
 
 @Component({
   selector: 'app-root',
@@ -60,14 +61,26 @@ export class AppComponent {
     orderType: "asc"
   }
 
+  userColumns: SearchParams = {
+    column:["email", "firstName", "lastName"]
+  };
+
+  carColumns: SearchParams = {
+    column:["brand", "model", "type", "numPlate"]
+  };
+
   utenti: TableConfig = {
     headers: this.headersUtenti,
-    order: this.orderUtenti
+    order: this.orderUtenti,
+    search: this.userColumns
   };
 
   auto: TableConfig = {
     headers: this.headersAuto,
-    order: this.orderAuto
+    order: this.orderAuto,
+    search: this.carColumns
   };
+
+
 
 }

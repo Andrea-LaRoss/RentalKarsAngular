@@ -1,3 +1,6 @@
+<form action="">
+  <input (keyup)="search($event)">
+</form>
 <table border="1">
   <tr>
     <th *ngFor="let header of tableConfig.headers" (click)="changeOrder(data, header.key, orderType)" >{{header.label}}
