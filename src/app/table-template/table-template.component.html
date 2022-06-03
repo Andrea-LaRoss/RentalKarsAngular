@@ -9,6 +9,7 @@
       <i [ngClass]="[orderType === 'asc' ? 'bi bi-arrow-down-short' : 'bi bi-arrow-up-short']"></i>
     </th>
   </tr>
+
   <tr *ngFor="let d of data">
     <td *ngFor="let h of tableConfig.headers">{{d[h.key]}}</td>
   </tr>
