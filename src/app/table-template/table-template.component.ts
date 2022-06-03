@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TableConfig } from "../table-config";
+import {filter} from "rxjs";
 
 @Component({
   selector: 'app-table-template',
@@ -8,9 +9,12 @@ import { TableConfig } from "../table-config";
 })
 export class TableTemplateComponent implements OnInit {
 
+
   @Input() tableConfig!: TableConfig;
 
   @Input() data!: any[];
+
+  backupData !: any[];
 
   orderType: string = "asc";
 
@@ -18,6 +22,7 @@ export class TableTemplateComponent implements OnInit {
 
   ngOnInit(): void {
     this.changeOrder(this.data, this.tableConfig.order.defaultColumn, this.tableConfig.order.orderType);
+    this.backupData = this.data;
   }
 
   changeOrder(list: any[], key: string, orderType: string): void {
@@ -53,21 +58,24 @@ export class TableTemplateComponent implements OnInit {
     };
   }
 
-  search(input: any, columns: any, list: any[]): any[] {
-    const value = input.target.value;
-    const filteredList: any = [];
-    console.log(filteredList);
-    for (let i = 0; i < list.length; i++) {
-      for(let j = 0; j < columns.length; j++) {
-        if(list[i][columns[j]].toLowerCase().includes(value)){
-          filteredList.push(list[i]);
+  search(input: any, columns: any []): any[]{
+    const value = input.target.value.toLowerCase();
+    const filteredList: any[] = [];
+    console.log(value.toString().length);
+    for(let i = 0; i < this.backupData.length; i++) {
+        for(let j = 0; j < columns.length; j++) {
+          if(this.backupData[i][columns[j]].includes(value)){
+            if(filteredList.includes(this.backupData[i])){
+              filteredList.push(this.backupData[i]);
+              console.log("filteredList: ", filteredList);
+            }
+          }
         }
       }
-    }
-    if(filteredList.length > 0 ) {
+    if(filteredList.length > 0 || value.toString().length > 0) {
       return filteredList;
     } else {
-      return list;
+      return this.backupData;
     }
   }
 
