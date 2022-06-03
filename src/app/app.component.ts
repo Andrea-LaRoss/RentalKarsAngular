@@ -6,6 +6,7 @@ import { USERS } from "./mock-users";
 import { CARS } from "./mock-cars";
 import {OrderTable} from "./order-table";
 import {SearchParams} from "./search-params";
+import {TablePagination} from "./table-pagination";
 
 @Component({
   selector: 'app-root',
@@ -61,6 +62,11 @@ export class AppComponent {
     orderType: "asc"
   }
 
+  paginationDefault: TablePagination = {
+    itemPerPage: 3,
+    itemPerPageOptions: [ 1, 2, 3, 4, 5, 6]
+  }
+
   userColumns: SearchParams = {
     column:["email", "firstName", "lastName"]
   };
@@ -72,13 +78,15 @@ export class AppComponent {
   utenti: TableConfig = {
     headers: this.headersUtenti,
     order: this.orderUtenti,
-    search: this.userColumns
+    search: this.userColumns,
+    pagination: this.paginationDefault
   };
 
   auto: TableConfig = {
     headers: this.headersAuto,
     order: this.orderAuto,
-    search: this.carColumns
+    search: this.carColumns,
+    pagination: this.paginationDefault
   };
 
 
