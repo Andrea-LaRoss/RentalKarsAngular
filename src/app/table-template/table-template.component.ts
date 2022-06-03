@@ -64,12 +64,10 @@ export class TableTemplateComponent implements OnInit {
     const value = input.target.value.toLowerCase();
     const filteredList: any[] = [];
     for(let i = 0; i < this.backupData.length; i++) {
-      //for(let j = 0; j < columns.length; j++) {
           if(this.backupData[i][columns].toLowerCase().includes(value)){
             console.log(this.backupData[i][columns]);
             filteredList.push(this.backupData[i]);
           }
-        //}
       }
     if(filteredList.length > 0 || value.toString().length > 0) {
       return filteredList;
