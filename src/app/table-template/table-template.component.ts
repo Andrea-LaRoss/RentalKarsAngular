@@ -61,13 +61,11 @@ export class TableTemplateComponent implements OnInit {
   search(input: any, columns: any []): any[]{
     const value = input.target.value.toLowerCase();
     const filteredList: any[] = [];
-    console.log(value.toString().length);
     for(let i = 0; i < this.backupData.length; i++) {
         for(let j = 0; j < columns.length; j++) {
-          if(this.backupData[i][columns[j]].includes(value)){
-            if(filteredList.includes(this.backupData[i])){
+          if(this.backupData[i][columns[j]].toLowerCase().includes(value)){
+            if(!filteredList.includes(this.backupData[i])){
               filteredList.push(this.backupData[i]);
-              console.log("filteredList: ", filteredList);
             }
           }
         }
