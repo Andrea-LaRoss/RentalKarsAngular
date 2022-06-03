@@ -1,4 +1,8 @@
-<input type="text" (keyup)="data = search($event, tableConfig.search.column)">
+<select #column>
+  <option *ngFor="let column of tableConfig.search.column" [ngValue]="column">{{column}}</option>
+</select>
+<input type="text" (keyup)="data = search($event, column.value)">
+
 <table border="1">
   <tr>
     <th *ngFor="let header of tableConfig.headers" (click)="changeOrder(data, header.key, orderType)" >{{header.label}}

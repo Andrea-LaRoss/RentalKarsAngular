@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TableConfig } from "../table-config";
-import {filter} from "rxjs";
+import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-table-template',
@@ -9,6 +9,7 @@ import {filter} from "rxjs";
 })
 export class TableTemplateComponent implements OnInit {
 
+  searchForm!: FormGroup;
 
   @Input() tableConfig!: TableConfig;
 
@@ -18,11 +19,12 @@ export class TableTemplateComponent implements OnInit {
 
   orderType: string = "asc";
 
-  constructor() { }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.changeOrder(this.data, this.tableConfig.order.defaultColumn, this.tableConfig.order.orderType);
     this.backupData = this.data;
+    this.searchForm = this.fb.group({column: [null]})
   }
 
   changeOrder(list: any[], key: string, orderType: string): void {
@@ -58,17 +60,16 @@ export class TableTemplateComponent implements OnInit {
     };
   }
 
-  search(input: any, columns: any []): any[]{
+  search(input: any, columns: any ): any[]{
     const value = input.target.value.toLowerCase();
     const filteredList: any[] = [];
     for(let i = 0; i < this.backupData.length; i++) {
-        for(let j = 0; j < columns.length; j++) {
-          if(this.backupData[i][columns[j]].toLowerCase().includes(value)){
-            if(!filteredList.includes(this.backupData[i])){
-              filteredList.push(this.backupData[i]);
-            }
+      //for(let j = 0; j < columns.length; j++) {
+          if(this.backupData[i][columns].toLowerCase().includes(value)){
+            console.log(this.backupData[i][columns]);
+            filteredList.push(this.backupData[i]);
           }
-        }
+        //}
       }
     if(filteredList.length > 0 || value.toString().length > 0) {
       return filteredList;
