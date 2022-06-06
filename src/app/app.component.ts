@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {ButtonConfig} from "./config/button-config";
 import {TableHeaders} from "./config/table-headers";
 import {TableConfig} from "./config/table-config";
-import { USERS } from "./classes/mock-users";
-import { CARS } from "./classes/mock-cars";
+import {USERS} from "./classes/mock-users";
+import {CARS} from "./classes/mock-cars";
 import {OrderTable} from "./config/order-table";
 import {SearchParams} from "./config/search-params";
 import {TablePagination} from "./config/table-pagination";
+import {ActionsEnum} from "./config/actions-enum";
 
 @Component({
   selector: 'app-root',
@@ -18,6 +19,7 @@ export class AppComponent {
   title = 'RentalKars';
   users = USERS;
   cars = CARS;
+  actions: ActionsEnum[] = [ActionsEnum.NEW_ROW, ActionsEnum.EDIT, ActionsEnum.DELETE];
 
   modifica: ButtonConfig = {
     css: "btn btn-primary",
@@ -79,14 +81,16 @@ export class AppComponent {
     headers: this.headersUtenti,
     order: this.orderUtenti,
     search: this.userColumns,
-    pagination: this.paginationDefault
+    pagination: this.paginationDefault,
+    actions: this.actions
   };
 
   auto: TableConfig = {
     headers: this.headersAuto,
     order: this.orderAuto,
     search: this.carColumns,
-    pagination: this.paginationDefault
+    pagination: this.paginationDefault,
+    actions: this.actions
   };
 
 

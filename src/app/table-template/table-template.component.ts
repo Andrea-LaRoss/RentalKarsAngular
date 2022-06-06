@@ -89,14 +89,14 @@ export class TableTemplateComponent implements OnInit {
     this.page++;
     let startPage: number = this.itemsPerPage * this.page;
     let endPage: number = startPage + this.itemsPerPage;
-    if(this.check(endPage)){
+    if(this.checkEnd(endPage)){
       this.data = this.backupData.slice(startPage);
     } else {
       this.data = this.backupData.slice(startPage, endPage);
     }
   }
 
-  check(endPage: number): boolean {
+  checkEnd(endPage: number): boolean {
     return endPage >= this.backupData.length;
   }
 
@@ -111,4 +111,7 @@ export class TableTemplateComponent implements OnInit {
     }
   }
 
+  checkMethod(toPrint: any) {
+    console.log(toPrint);
+  }
 }
