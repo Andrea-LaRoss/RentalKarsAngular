@@ -27,7 +27,7 @@ export class TableTemplateComponent implements OnInit {
     this.backupData = this.data;
     this.data = this.backupData.slice(0,this.tableConfig.pagination.itemPerPage);
     this.itemsPerPage = this.tableConfig.pagination.itemPerPage;
-    this.page = this.tableConfig.pagination.itemPerPage;
+    this.page = 0;
   }
 
   changeOrder(list: any[], key: string, orderType: string): void {
@@ -81,41 +81,38 @@ export class TableTemplateComponent implements OnInit {
 
   changePagination(list: any[], itemsPerPage: string): any[] {
     this.itemsPerPage = Number(itemsPerPage);
+    this.page = 0;
     list = this.backupData.slice(0,this.itemsPerPage);
     return list;
   }
 
   nextPage(list: any[]): any [] {
-    console.log(this.page);
-    console.log("Paginazione: ",this.itemsPerPage);
-    if(this.page > this.backupData.length){
-      list = this.backupData.slice(this.backupData.length - this.itemsPerPage, this.backupData.length);
+    this.page++;
+    let startPage: number = this.itemsPerPage * this.page;
+    let endPage: number = startPage + this.itemsPerPage;
+    if(this.check(endPage)){
+      list = this.backupData.slice(startPage);
     } else {
-      if(this.page <= this.itemsPerPage){
-        this.page = this.itemsPerPage;
-      } else {
-        this.page += this.itemsPerPage;
-      }
-      list = this.backupData.slice(this.page, this.page + this.itemsPerPage);
+      list = this.backupData.slice(startPage, endPage);
     }
-    console.log(this.page);
+
     return list;
   }
 
+  check(endPage: number): boolean {
+    return endPage >= this.backupData.length;
+  }
+
   prevPage(list: any[]): any[] {
-    console.log(this.page);
-    console.log("Paginazione: ",this.itemsPerPage);
-    if(this.page < 0){
+    this.page--;
+    let startPage: number = this.itemsPerPage * this.page;
+    let endPage: number = startPage + this.itemsPerPage;
+    if(startPage <= 0){
       list = this.backupData.slice(0, this.itemsPerPage);
     } else {
-      if(this.page >= this.itemsPerPage){
-        this.page = this.itemsPerPage;
-      } else {
-        this.page -= this.itemsPerPage;
-      }
-      list = this.backupData.slice(this.page - this.itemsPerPage, this.page);
+      list = this.backupData.slice(startPage, endPage);
     }
-    console.log(this.page);
+
     return list;
   }
 
