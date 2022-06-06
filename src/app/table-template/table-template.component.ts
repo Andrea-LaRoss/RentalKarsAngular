@@ -12,11 +12,7 @@ export class TableTemplateComponent implements OnInit {
 
   @Input() data!: any[];
 
-  @Output() add = new EventEmitter();
-
-  @Output() edit = new EventEmitter();
-
-  @Output() delete = new EventEmitter();
+  @Output() action = new EventEmitter();
 
   backupData !: any[];
 
@@ -117,7 +113,4 @@ export class TableTemplateComponent implements OnInit {
     }
   }
 
-  checkMethod(toPrint: any) {
-    console.log(toPrint);
-  }
 }

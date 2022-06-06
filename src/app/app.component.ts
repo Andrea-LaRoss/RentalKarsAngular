@@ -105,4 +105,8 @@ export class AppComponent {
     console.log("Elimina");
   }
 
+  onAction(x: any) {
+    console.log(x);
+  }
+
 }
