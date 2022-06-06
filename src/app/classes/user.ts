@@ -3,5 +3,4 @@ export interface User {
   firstName: string;
   lastName: string;
   password: string;
-  //birthday: Date; Non sicuro sul tipo
 }

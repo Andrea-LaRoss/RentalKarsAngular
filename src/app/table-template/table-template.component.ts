@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { TableConfig } from "../table-config";
+import { TableConfig } from "../config/table-config";
 
 @Component({
   selector: 'app-table-template',

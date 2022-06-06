@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import {ButtonConfig} from "./button-config";
-import {TableHeaders} from "./table-headers";
-import {TableConfig} from "./table-config";
-import { USERS } from "./mock-users";
-import { CARS } from "./mock-cars";
-import {OrderTable} from "./order-table";
-import {SearchParams} from "./search-params";
-import {TablePagination} from "./table-pagination";
+import {ButtonConfig} from "./config/button-config";
+import {TableHeaders} from "./config/table-headers";
+import {TableConfig} from "./config/table-config";
+import { USERS } from "./classes/mock-users";
+import { CARS } from "./classes/mock-cars";
+import {OrderTable} from "./config/order-table";
+import {SearchParams} from "./config/search-params";
+import {TablePagination} from "./config/table-pagination";
 
 @Component({
   selector: 'app-root',

@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import { ButtonConfig } from "../button-config";
+import { ButtonConfig } from "../config/button-config";
 
 @Component({
   selector: 'app-configurable-button',
