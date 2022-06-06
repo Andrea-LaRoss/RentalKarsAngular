@@ -79,41 +79,36 @@ export class TableTemplateComponent implements OnInit {
     }
   }
 
-  changePagination(list: any[], itemsPerPage: string): any[] {
+  changePagination(itemsPerPage: string) {
     this.itemsPerPage = Number(itemsPerPage);
     this.page = 0;
-    list = this.backupData.slice(0,this.itemsPerPage);
-    return list;
+    this.data = this.backupData.slice(0,this.itemsPerPage);
   }
 
-  nextPage(list: any[]): any [] {
+  nextPage(): void {
     this.page++;
     let startPage: number = this.itemsPerPage * this.page;
     let endPage: number = startPage + this.itemsPerPage;
     if(this.check(endPage)){
-      list = this.backupData.slice(startPage);
+      this.data = this.backupData.slice(startPage);
     } else {
-      list = this.backupData.slice(startPage, endPage);
+      this.data = this.backupData.slice(startPage, endPage);
     }
-
-    return list;
   }
 
   check(endPage: number): boolean {
     return endPage >= this.backupData.length;
   }
 
-  prevPage(list: any[]): any[] {
+  prevPage(): void {
     this.page--;
     let startPage: number = this.itemsPerPage * this.page;
     let endPage: number = startPage + this.itemsPerPage;
     if(startPage <= 0){
-      list = this.backupData.slice(0, this.itemsPerPage);
+      this.data = this.backupData.slice(0, this.itemsPerPage);
     } else {
-      list = this.backupData.slice(startPage, endPage);
+      this.data = this.backupData.slice(startPage, endPage);
     }
-
-    return list;
   }
 
 }
