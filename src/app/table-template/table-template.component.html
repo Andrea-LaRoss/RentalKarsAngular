@@ -14,4 +14,6 @@
     <td *ngFor="let h of tableConfig.headers">{{d[h.key]}}</td>
   </tr>
 </table>
+<button type="button" (click)="data = prevPage(data, tableConfig.pagination.itemPerPage)"> < </button>
+<button type="button" (click)="data = nextPage(data, tableConfig.pagination.itemPerPage)"> > </button>
 

@@ -21,6 +21,7 @@ export class TableTemplateComponent implements OnInit {
   ngOnInit(): void {
     this.changeOrder(this.data, this.tableConfig.order.defaultColumn, this.tableConfig.order.orderType);
     this.backupData = this.data;
+    this.data = this.backupData.slice(0,this.tableConfig.pagination.itemPerPage);
   }
 
   changeOrder(list: any[], key: string, orderType: string): void {
@@ -70,6 +71,21 @@ export class TableTemplateComponent implements OnInit {
     } else {
       return this.backupData;
     }
+  }
+
+  changePagination(list: any[], itemsPerPage: number): any[] {
+    list = this.backupData.slice(0,itemsPerPage);
+    return list;
+  }
+
+  nextPage(list: any[], itemsPerPage: number): any [] {
+    list = this.backupData.slice(itemsPerPage, itemsPerPage + itemsPerPage);
+    return list;
+  }
+
+  prevPage(list: any[], itemsPerPage: number): any[] {
+    list = this.backupData.slice(itemsPerPage - itemsPerPage, itemsPerPage);
+    return list;
   }
 
 }
