@@ -3,6 +3,6 @@
 <app-configurable-button [config]="modifica" (generalEvent)="testModifica($event)"></app-configurable-button>
 <app-configurable-button [config]="aggiungi" (generalEvent)="testAggiungi($event)"></app-configurable-button>
 <br><br>
-<app-table-template [tableConfig]="utenti" [data]="users"></app-table-template>
+<app-table-template [tableConfig]="utenti" [data]="users" (add)="onAdd()" (edit)="onEdit()" (delete)="onDelete()"></app-table-template>
 <br><br><br>
 <app-table-template [tableConfig]="auto" [data]="cars"></app-table-template>

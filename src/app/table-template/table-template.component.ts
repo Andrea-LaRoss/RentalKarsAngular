@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { TableConfig } from "../config/table-config";
 
 @Component({
@@ -11,6 +11,12 @@ export class TableTemplateComponent implements OnInit {
   @Input() tableConfig!: TableConfig;
 
   @Input() data!: any[];
+
+  @Output() add = new EventEmitter();
+
+  @Output() edit = new EventEmitter();
+
+  @Output() delete = new EventEmitter();
 
   backupData !: any[];
 

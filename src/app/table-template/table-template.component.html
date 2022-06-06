@@ -12,11 +12,11 @@
 
   <tr *ngFor="let d of data">
     <td *ngFor="let h of tableConfig.headers">{{d[h.key]}}</td>
-    <button type="button" (click)="checkMethod(tableConfig.actions[1])" >Modifica</button>
-    <button type="button" (click)="checkMethod(tableConfig.actions[2])" >Elimina</button>
+    <button type="button" (click)="edit.emit()" >Modifica</button>
+    <button type="button" (click)="delete.emit()" >Elimina</button>
   </tr>
 </table>
-<button type="button" (click)="checkMethod(tableConfig.actions[0])" >Aggiungi</button>
+<button type="button" (click)="add.emit()" >Aggiungi</button>
 <button type="button" [disabled]="page === 0" (click)="prevPage()"> < </button>
 <button type="button" [disabled]="checkEnd(itemsPerPage * page + itemsPerPage)" (click)="nextPage()"> > </button>
 <select #pagination (change)="changePagination(pagination.value)">

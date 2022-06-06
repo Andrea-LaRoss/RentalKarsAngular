@@ -93,6 +93,16 @@ export class AppComponent {
     actions: this.actions
   };
 
+  onAdd() {
+    console.log("Aggiunta");
+  }
 
+  onEdit() {
+    console.log("Modifica");
+  }
+
+  onDelete() {
+    console.log("Elimina");
+  }
 
 }
