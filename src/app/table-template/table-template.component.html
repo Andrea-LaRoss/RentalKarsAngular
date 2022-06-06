@@ -1,5 +1,5 @@
 <select #column>
-  <option *ngFor="let column of tableConfig.search.column" [ngValue]="column">{{column}}</option>
+  <option *ngFor="let column of tableConfig.search.column" >{{column}}</option>
 </select>
 <input type="text" (keyup)="data = search($event, column.value)">
 

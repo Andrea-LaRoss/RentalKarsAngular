@@ -15,7 +15,6 @@ import { TableTemplateComponent } from './table-template/table-template.componen
   ],
     imports: [
         BrowserModule,
-
     ],
   providers: [],
   bootstrap: [AppComponent]
