@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TableConfig } from "../table-config";
-import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-table-template',
@@ -8,8 +7,6 @@ import {FormBuilder, FormGroup} from "@angular/forms";
   styleUrls: ['./table-template.component.css']
 })
 export class TableTemplateComponent implements OnInit {
-
-  searchForm!: FormGroup;
 
   @Input() tableConfig!: TableConfig;
 
@@ -19,12 +16,11 @@ export class TableTemplateComponent implements OnInit {
 
   orderType: string = "asc";
 
-  constructor(private fb: FormBuilder) { }
+  constructor() { }
 
   ngOnInit(): void {
     this.changeOrder(this.data, this.tableConfig.order.defaultColumn, this.tableConfig.order.orderType);
     this.backupData = this.data;
-    this.searchForm = this.fb.group({column: [null]})
   }
 
   changeOrder(list: any[], key: string, orderType: string): void {
