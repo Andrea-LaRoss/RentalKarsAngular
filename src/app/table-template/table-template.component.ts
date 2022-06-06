@@ -16,12 +16,18 @@ export class TableTemplateComponent implements OnInit {
 
   orderType: string = "asc";
 
+  itemsPerPage!: number;
+
+  page!: number;
+
   constructor() { }
 
   ngOnInit(): void {
     this.changeOrder(this.data, this.tableConfig.order.defaultColumn, this.tableConfig.order.orderType);
     this.backupData = this.data;
     this.data = this.backupData.slice(0,this.tableConfig.pagination.itemPerPage);
+    this.itemsPerPage = this.tableConfig.pagination.itemPerPage;
+    this.page = this.tableConfig.pagination.itemPerPage;
   }
 
   changeOrder(list: any[], key: string, orderType: string): void {
@@ -73,18 +79,43 @@ export class TableTemplateComponent implements OnInit {
     }
   }
 
-  changePagination(list: any[], itemsPerPage: number): any[] {
-    list = this.backupData.slice(0,itemsPerPage);
+  changePagination(list: any[], itemsPerPage: string): any[] {
+    this.itemsPerPage = Number(itemsPerPage);
+    list = this.backupData.slice(0,this.itemsPerPage);
     return list;
   }
 
-  nextPage(list: any[], itemsPerPage: number): any [] {
-    list = this.backupData.slice(itemsPerPage, itemsPerPage + itemsPerPage);
+  nextPage(list: any[]): any [] {
+    console.log(this.page);
+    console.log("Paginazione: ",this.itemsPerPage);
+    if(this.page > this.backupData.length){
+      list = this.backupData.slice(this.backupData.length - this.itemsPerPage, this.backupData.length);
+    } else {
+      if(this.page <= this.itemsPerPage){
+        this.page = this.itemsPerPage;
+      } else {
+        this.page += this.itemsPerPage;
+      }
+      list = this.backupData.slice(this.page, this.page + this.itemsPerPage);
+    }
+    console.log(this.page);
     return list;
   }
 
-  prevPage(list: any[], itemsPerPage: number): any[] {
-    list = this.backupData.slice(itemsPerPage - itemsPerPage, itemsPerPage);
+  prevPage(list: any[]): any[] {
+    console.log(this.page);
+    console.log("Paginazione: ",this.itemsPerPage);
+    if(this.page < 0){
+      list = this.backupData.slice(0, this.itemsPerPage);
+    } else {
+      if(this.page >= this.itemsPerPage){
+        this.page = this.itemsPerPage;
+      } else {
+        this.page -= this.itemsPerPage;
+      }
+      list = this.backupData.slice(this.page - this.itemsPerPage, this.page);
+    }
+    console.log(this.page);
     return list;
   }
 

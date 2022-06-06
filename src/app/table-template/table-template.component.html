@@ -14,6 +14,10 @@
     <td *ngFor="let h of tableConfig.headers">{{d[h.key]}}</td>
   </tr>
 </table>
-<button type="button" (click)="data = prevPage(data, tableConfig.pagination.itemPerPage)"> < </button>
-<button type="button" (click)="data = nextPage(data, tableConfig.pagination.itemPerPage)"> > </button>
+<button type="button" (click)="data = prevPage(data)"> < </button>
+<button type="button" (click)="data = nextPage(data)"> > </button>
+<select #pagination>
+  <option *ngFor="let pagination of tableConfig.pagination.itemPerPageOptions">{{pagination}}</option>
+</select>
+<button type="button" (click)="data = changePagination(data, pagination.value)"></button>
 
