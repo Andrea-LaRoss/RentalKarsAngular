@@ -3,14 +3,16 @@
 </select>
 <input type="text" (keyup)="search($event, column.value)">
 
-<table border="1">
+<table class="table">
+  <thead>
   <tr>
-    <th *ngFor="let header of tableConfig.headers" (click)="changeOrder(data, header.key, orderType)" >{{header.label}}
+    <th scope="col" *ngFor="let header of tableConfig.headers" (click)="changeOrder(data, header.key, orderType)" >{{header.label}}
       <i [ngClass]="[orderType === 'asc' ? 'bi bi-arrow-down-short' : 'bi bi-arrow-up-short']"></i>
     </th>
   </tr>
+  </thead>
 
-  <tr *ngFor="let d of data">
+  <tr class="table-secondary" *ngFor="let d of data">
     <td *ngFor="let h of tableConfig.headers">{{d[h.key]}}</td>
     <ng-container *ngFor="let action of tableConfig.actions">
       <app-configurable-button *ngIf="action.inRow" [config]="getConfig(action.action)" (generalEvent)="provaEvento(d, action.action)"></app-configurable-button>
