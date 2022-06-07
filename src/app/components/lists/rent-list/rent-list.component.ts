@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Actions, TableConfig } from "../templates/table-template/config/table-config";
-import { ActionsEnum } from "../templates/table-template/config/actions-enum";
-import { TableHeaders } from "../templates/table-template/config/table-headers";
-import { OrderTable } from "../templates/table-template/config/order-table";
-import { SearchParams } from "../templates/table-template/config/search-params";
-import { TablePagination } from "../templates/table-template/config/table-pagination";
-import { RESERVATIONS } from "../../mock-data/mock-reservations";
+import { Actions, TableConfig } from "../../templates/table-template/config/table-config";
+import { ActionsEnum } from "../../templates/table-template/config/actions-enum";
+import { TableHeaders } from "../../templates/table-template/config/table-headers";
+import { OrderTable } from "../../templates/table-template/config/order-table";
+import { SearchParams } from "../../templates/table-template/config/search-params";
+import { TablePagination } from "../../templates/table-template/config/table-pagination";
+import { RESERVATIONS } from "../../../mock-data/mock-reservations";
 
 @Component({
   selector: 'app-rent-list',

@@ -15,13 +15,13 @@
   <tr class="table-secondary" *ngFor="let d of data">
     <td *ngFor="let h of tableConfig.headers">{{d[h.key]}}</td>
     <ng-container *ngFor="let action of tableConfig.actions">
-      <app-configurable-button *ngIf="action.inRow" [config]="getConfig(action.action)" (generalEvent)="provaEvento(d, action.action)"></app-configurable-button>
+      <app-configurable-button *ngIf="action.inRow" [config]="getConfig(action.action)" (generalEvent)="takeAction(d, action.action)"></app-configurable-button>
     </ng-container>
   </tr>
 
 </table>
-<button type="button" [disabled]="page === 0" (click)="prevPage()"> < </button>
-<button type="button" [disabled]="checkEnd(itemsPerPage * page + itemsPerPage)" (click)="nextPage()"> > </button>
+<app-configurable-button [config]="PrevPage" (click)="prevPage()"></app-configurable-button>
+<app-configurable-button [config]="NextPage" (click)="nextPage()"></app-configurable-button>
 <select #pagination (change)="changePagination(pagination.value)">
   <option *ngFor="let pagination of tableConfig.pagination.itemPerPageOptions">{{pagination}}</option>
 </select>

@@ -28,24 +28,17 @@ export class TableTemplateComponent implements OnInit {
 
   constructor() { }
 
-   Modifica: ButtonConfig = {
+   PrevPage: ButtonConfig = {
     css: "btn btn-primary",
-    text: "Modifica",
-    type: "button"
+    text: "<",
+    type: "button",
   };
 
-  Aggiungi: ButtonConfig = {
-    css: "btn btn-success",
-    text: "Aggiungi",
+  NextPage: ButtonConfig = {
+    css: "btn btn-primary",
+    text: ">",
     type: "button"
   };
-
-  Elimina: ButtonConfig = {
-    css: "btn btn-danger",
-    text: "Elimina",
-    type: "button"
-  }
-
 
   ngOnInit(): void {
     this.changeOrder(this.data, this.tableConfig.order.defaultColumn, this.tableConfig.order.orderType);
@@ -141,7 +134,7 @@ export class TableTemplateComponent implements OnInit {
     }
   }
 
-  provaEvento(object: any, action: string) {
+  takeAction(object: any, action: string) {
     this.outputEvento.emit({
       row: object,
       action: action
@@ -149,6 +142,6 @@ export class TableTemplateComponent implements OnInit {
   }
 
   getConfig(action: ActionsEnum) {
-    return {css: '', text: action, type: 'button'};
+    return {css: 'btn btn-secondary', text: action, type: 'button'};
   }
 }

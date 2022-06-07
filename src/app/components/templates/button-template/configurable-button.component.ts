@@ -19,6 +19,6 @@ export class ConfigurableButtonComponent implements OnInit {
   }
 
   startEvent() {
-    this.generalEvent.emit(this.config.text)
+    this.generalEvent.emit()
   }
 }

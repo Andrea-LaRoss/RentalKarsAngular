@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {USERS} from "../../mock-data/mock-users";
-import {Actions, TableConfig} from "../templates/table-template/config/table-config";
-import {ActionsEnum} from "../templates/table-template/config/actions-enum";
-import {TableHeaders} from "../templates/table-template/config/table-headers";
-import {TablePagination} from "../templates/table-template/config/table-pagination";
-import {OrderTable} from "../templates/table-template/config/order-table";
-import {SearchParams} from "../templates/table-template/config/search-params";
+import {USERS} from "../../../mock-data/mock-users";
+import {Actions, TableConfig} from "../../templates/table-template/config/table-config";
+import {ActionsEnum} from "../../templates/table-template/config/actions-enum";
+import {TableHeaders} from "../../templates/table-template/config/table-headers";
+import {TablePagination} from "../../templates/table-template/config/table-pagination";
+import {OrderTable} from "../../templates/table-template/config/order-table";
+import {SearchParams} from "../../templates/table-template/config/search-params";
 
 @Component({
   selector: 'app-users-list',

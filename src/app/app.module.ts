@@ -7,9 +7,9 @@ import { HeaderComponent } from './components/templates/header/header.component'
 import { TableTemplateComponent } from './components/templates/table-template/table-template.component';
 import { RouterModule } from "@angular/router";
 import { HomepageComponent } from './components/homepage/homepage.component';
-import { CarsListComponent } from './components/cars-list/cars-list.component';
-import { UsersListComponent } from './components/users-list/users-list.component';
-import { RentListComponent } from './components/rent-list/rent-list.component';
+import { CarsListComponent } from './components/lists/cars-list/cars-list.component';
+import { UsersListComponent } from './components/lists/users-list/users-list.component';
+import { RentListComponent } from './components/lists/rent-list/rent-list.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { UserFormComponent } from './components/forms/user-form/user-form.component';
 import { ReservationFormComponent } from './components/forms/reservation-form/reservation-form.component';
