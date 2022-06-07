@@ -41,7 +41,8 @@ export class AppComponent {
 
   testTasto(text: any) {
     console.log("Oggetto Passato: ", text[0]);
-    console.log("Bottone Premuto", text[1]);
+    console.log("Bottone Premuto", text.actions);
+
   }
 
   headersUtenti: TableHeaders[] = [

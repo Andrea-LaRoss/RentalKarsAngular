@@ -27,7 +27,7 @@ export class TableTemplateComponent implements OnInit {
 
   constructor() { }
 
-  Modifica: ButtonConfig = {
+   Modifica: ButtonConfig = {
     css: "btn btn-primary",
     text: "Modifica",
     type: "button"
