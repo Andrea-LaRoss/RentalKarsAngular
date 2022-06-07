@@ -27,19 +27,19 @@ export class TableTemplateComponent implements OnInit {
 
   constructor() { }
 
-  EDIT: ButtonConfig = {
+  Modifica: ButtonConfig = {
     css: "btn btn-primary",
     text: "Modifica",
     type: "button"
   };
 
-  NEW_ROW: ButtonConfig = {
+  Aggiungi: ButtonConfig = {
     css: "btn btn-success",
     text: "Aggiungi",
     type: "button"
   };
 
-  DELETE: ButtonConfig = {
+  Elimina: ButtonConfig = {
     css: "btn btn-danger",
     text: "Elimina",
     type: "button"

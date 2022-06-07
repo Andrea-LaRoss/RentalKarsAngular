@@ -18,7 +18,7 @@ export class ConfigurableButtonComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  printLog() {
+  startEvent() {
     this.generalEvent.emit(this.config.text)
   }
 }
