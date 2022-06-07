@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TableConfig } from "../config/table-config";
+import {ButtonConfig} from "../config/button-config";
 
 @Component({
   selector: 'app-table-template',
@@ -25,6 +26,24 @@ export class TableTemplateComponent implements OnInit {
 
 
   constructor() { }
+
+  EDIT: ButtonConfig = {
+    css: "btn btn-primary",
+    text: "Modifica",
+    type: "button"
+  };
+
+  NEW_ROW: ButtonConfig = {
+    css: "btn btn-success",
+    text: "Aggiungi",
+    type: "button"
+  };
+
+  DELETE: ButtonConfig = {
+    css: "btn btn-danger",
+    text: "Elimina",
+    type: "button"
+  }
 
 
   ngOnInit(): void {

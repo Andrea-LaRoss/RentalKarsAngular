@@ -13,12 +13,11 @@
   <tr *ngFor="let d of data">
     <td *ngFor="let h of tableConfig.headers">{{d[h.key]}}</td>
     <ng-container *ngFor="let action of tableConfig.actions">
-      <button *ngIf="action != tableConfig.actions[0]" (click)="provaEvento(d, action)">{{action}}</button>
+      <app-configurable-button *ngIf="action != tableConfig.actions[0]" [config]="DELETE" (generalEvent)="provaEvento(d, action)"></app-configurable-button>
     </ng-container>
   </tr>
 
 </table>
-<!--<button (click)="provaEvento(d, tableConfig.actions[1])">Prova</button>-->
 <button type="button" [disabled]="page === 0" (click)="prevPage()"> < </button>
 <button type="button" [disabled]="checkEnd(itemsPerPage * page + itemsPerPage)" (click)="nextPage()"> > </button>
 <select #pagination (change)="changePagination(pagination.value)">
