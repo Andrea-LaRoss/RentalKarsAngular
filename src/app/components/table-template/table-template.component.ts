@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { TableConfig } from "../config/table-config";
-import {ButtonConfig} from "../config/button-config";
+import { TableConfig } from "./config/table-config";
+import {ButtonConfig} from "../button-template/config/button-config";
+import {ActionsEnum} from "./config/actions-enum";
 
 @Component({
   selector: 'app-table-template',
@@ -141,7 +142,13 @@ export class TableTemplateComponent implements OnInit {
   }
 
   provaEvento(object: any, action: string) {
-    this.outputEvento.emit([object, action]);
+    this.outputEvento.emit({
+      row: object,
+      action: action
+    });
   }
 
+  getConfig(action: ActionsEnum) {
+    return {css: '', text: action, type: 'button'};
+  }
 }

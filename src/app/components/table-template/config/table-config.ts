@@ -10,5 +10,10 @@ export class TableConfig {
   order!: OrderTable;
   search!: SearchParams;
   pagination !: TablePagination;
-  actions !: ActionsEnum[];
+  actions !: Actions[];
+}
+
+export interface Actions {
+  action: ActionsEnum;
+  inRow: boolean;
 }
