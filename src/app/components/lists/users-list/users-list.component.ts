@@ -65,9 +65,19 @@ export class UsersListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  testTasto(object: any) {
-    console.log("Oggetto Passato: ", object.row);
-    console.log("Bottone Premuto", object.action);
-  }
+  onAction(object: any) {
+    switch(object.action) {
+      case "Aggiungi":
+        console.log("Aggiungi (questa funzione dopo)");
+        break;
 
+      case "Modifica":
+        console.log("Modifica (il codice così questa parte funziona)");
+        break;
+
+      case "Elimina":
+        console.log("Eliminazione: ", object.row);
+        this.users = this.users.filter(u => u !== object.row);
+    }
+  }
 }
