@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {CARS} from "../classes/mock-cars";
-import {TableHeaders} from "../components/table-template/config/table-headers";
-import {OrderTable} from "../components/table-template/config/order-table";
-import {SearchParams} from "../components/table-template/config/search-params";
-import {Actions, TableConfig} from "../components/table-template/config/table-config";
-import {TablePagination} from "../components/table-template/config/table-pagination";
-import {ActionsEnum} from "../components/table-template/config/actions-enum";
+import {CARS} from "../../mock-data/mock-cars";
+import {TableHeaders} from "../templates/table-template/config/table-headers";
+import {OrderTable} from "../templates/table-template/config/order-table";
+import {SearchParams} from "../templates/table-template/config/search-params";
+import {Actions, TableConfig} from "../templates/table-template/config/table-config";
+import {TablePagination} from "../templates/table-template/config/table-pagination";
+import {ActionsEnum} from "../templates/table-template/config/actions-enum";
 
 @Component({
   selector: 'app-cars-list',
