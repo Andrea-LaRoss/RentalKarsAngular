@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TableConfig } from "../config/table-config";
 
 @Component({
@@ -6,6 +6,7 @@ import { TableConfig } from "../config/table-config";
   templateUrl: './table-template.component.html',
   styleUrls: ['./table-template.component.css']
 })
+
 export class TableTemplateComponent implements OnInit {
 
   @Input() tableConfig!: TableConfig;
@@ -121,7 +122,6 @@ export class TableTemplateComponent implements OnInit {
   }
 
   provaEvento(object: any, action: string) {
-
     this.outputEvento.emit([object, action]);
   }
 

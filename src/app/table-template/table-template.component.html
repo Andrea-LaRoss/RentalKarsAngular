@@ -13,7 +13,7 @@
   <tr *ngFor="let d of data">
     <td *ngFor="let h of tableConfig.headers">{{d[h.key]}}</td>
     <ng-container *ngFor="let action of tableConfig.actions">
-      <button (click)="provaEvento(d, action)">{{action}}</button>
+      <button *ngIf="action != tableConfig.actions[0]" (click)="provaEvento(d, action)">{{action}}</button>
     </ng-container>
   </tr>
 
