@@ -1,7 +1,4 @@
 <app-header></app-header>
-<br>
-<app-configurable-button [config]="Modifica" (generalEvent)="testTasto($event)"></app-configurable-button>
-<app-configurable-button [config]="Aggiungi" (generalEvent)="testTasto($event)"></app-configurable-button>
 <br><br>
 <app-table-template [tableConfig]="utenti" [data]="users" (outputEvento)="testTasto($event)"></app-table-template>
 <br><br><br>

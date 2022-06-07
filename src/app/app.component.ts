@@ -1,13 +1,13 @@
-import {Component} from '@angular/core';
-import {ButtonConfig} from "./config/button-config";
-import {TableHeaders} from "./config/table-headers";
-import {TableConfig} from "./config/table-config";
-import {USERS} from "./classes/mock-users";
-import {CARS} from "./classes/mock-cars";
-import {OrderTable} from "./config/order-table";
-import {SearchParams} from "./config/search-params";
-import {TablePagination} from "./config/table-pagination";
-import {ActionsEnum} from "./config/actions-enum";
+import { Component } from '@angular/core';
+import { ButtonConfig } from "./config/button-config";
+import { TableHeaders } from "./config/table-headers";
+import { TableConfig } from "./config/table-config";
+import { USERS } from "./classes/mock-users";
+import { CARS } from "./classes/mock-cars";
+import { OrderTable } from "./config/order-table";
+import { SearchParams } from "./config/search-params";
+import { TablePagination } from "./config/table-pagination";
+import { ActionsEnum } from "./config/actions-enum";
 
 @Component({
   selector: 'app-root',
@@ -21,28 +21,10 @@ export class AppComponent {
   cars = CARS;
   actions: ActionsEnum[] = [ActionsEnum.NEW_ROW, ActionsEnum.EDIT, ActionsEnum.DELETE];
 
-  Modifica: ButtonConfig = {
-    css: "btn btn-primary",
-    text: "Modifica",
-    type: "button"
-  };
-
-  Aggiungi: ButtonConfig = {
-    css: "btn btn-success",
-    text: "Aggiungi",
-    type: "button"
-  };
-
-  Elimina: ButtonConfig = {
-    css: "btn btn-danger",
-    text: "Elimina",
-    type: "button"
-  }
 
   testTasto(text: any) {
     console.log("Oggetto Passato: ", text[0]);
     console.log("Bottone Premuto", text.actions);
-
   }
 
   headersUtenti: TableHeaders[] = [
@@ -96,9 +78,5 @@ export class AppComponent {
     pagination: this.paginationDefault,
     actions: this.actions
   };
-
-  onAction(x: any) {
-    console.log(x);
-  }
 
 }
