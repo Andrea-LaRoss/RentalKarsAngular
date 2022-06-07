@@ -20,8 +20,8 @@
   </tr>
 
 </table>
-<app-configurable-button [config]="PrevPage" (click)="prevPage()"></app-configurable-button>
-<app-configurable-button [config]="NextPage" (click)="nextPage()"></app-configurable-button>
+<button type="button" class="btn btn-primary" [disabled]="page === 0" (click)="prevPage()"> < </button>
+<button type="button" class="btn btn-primary" [disabled]="checkEnd(itemsPerPage * page + itemsPerPage)" (click)="nextPage()"> > </button>
 <select #pagination (change)="changePagination(pagination.value)">
   <option *ngFor="let pagination of tableConfig.pagination.itemPerPageOptions">{{pagination}}</option>
 </select>
