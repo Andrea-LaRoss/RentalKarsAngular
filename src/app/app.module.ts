@@ -10,6 +10,7 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { CarsListComponent } from './components/cars-list/cars-list.component';
 import { UsersListComponent } from './components/users-list/users-list.component';
 import { RentListComponent } from './components/rent-list/rent-list.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { RentListComponent } from './components/rent-list/rent-list.component';
     HomepageComponent,
     CarsListComponent,
     UsersListComponent,
-    RentListComponent
+    RentListComponent,
+    DashboardComponent
   ],
 
   imports: [
@@ -29,7 +31,8 @@ import { RentListComponent } from './components/rent-list/rent-list.component';
       {path: '', component: HomepageComponent},
       {path: 'cars', component: CarsListComponent},
       {path: 'users', component: UsersListComponent},
-      {path: 'reservations', component: RentListComponent}])
+      {path: 'reservations', component: RentListComponent},
+      {path: 'dashboard', component: DashboardComponent}])
   ],
   providers: [],
   bootstrap: [AppComponent]
