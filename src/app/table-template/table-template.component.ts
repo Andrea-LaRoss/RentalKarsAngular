@@ -12,7 +12,7 @@ export class TableTemplateComponent implements OnInit {
 
   @Input() data!: any[];
 
-  @Output() action = new EventEmitter();
+  @Output() outputEvento = new EventEmitter();
 
   backupData !: any[];
 
@@ -22,7 +22,9 @@ export class TableTemplateComponent implements OnInit {
 
   page!: number;
 
+
   constructor() { }
+
 
   ngOnInit(): void {
     this.changeOrder(this.data, this.tableConfig.order.defaultColumn, this.tableConfig.order.orderType);
@@ -31,6 +33,7 @@ export class TableTemplateComponent implements OnInit {
     this.itemsPerPage = this.tableConfig.pagination.itemPerPage;
     this.page = 0;
   }
+
 
   changeOrder(list: any[], key: string, orderType: string): void {
     if(orderType == "asc"){
@@ -41,6 +44,7 @@ export class TableTemplateComponent implements OnInit {
       list.sort(this.compareValues(key, orderType));
     }
   }
+
 
   compareValues(key: string, order: string) {
     return function innerSort(a: any, b: any) {
@@ -65,27 +69,28 @@ export class TableTemplateComponent implements OnInit {
     };
   }
 
-  search(input: any, columns: any ): any[]{
+
+  search(input: any, columns: any ): void {
     const value = input.target.value.toLowerCase();
     const filteredList: any[] = [];
-    for(let i = 0; i < this.backupData.length; i++) {
-          if(this.backupData[i][columns].toLowerCase().includes(value)){
-            console.log(this.backupData[i][columns]);
-            filteredList.push(this.backupData[i]);
-          }
+    for (let i = 0; i < this.backupData.length; i++) {
+      if (this.backupData[i][columns].toLowerCase().includes(value)) {
+        console.log(this.backupData[i][columns]);
+        filteredList.push(this.backupData[i]);
       }
-    if(filteredList.length > 0 || value.toString().length > 0) {
-      return filteredList;
-    } else {
-      return this.backupData;
+    }
+    if (filteredList.length > 0 || value.toString().length > 0) {
+      this.data = filteredList;
     }
   }
 
-  changePagination(itemsPerPage: string) {
+
+  changePagination(itemsPerPage: string): void {
     this.itemsPerPage = Number(itemsPerPage);
     this.page = 0;
     this.data = this.backupData.slice(0,this.itemsPerPage);
   }
+
 
   nextPage(): void {
     this.page++;
@@ -98,9 +103,11 @@ export class TableTemplateComponent implements OnInit {
     }
   }
 
+
   checkEnd(endPage: number): boolean {
     return endPage >= this.backupData.length;
   }
+
 
   prevPage(): void {
     this.page--;
@@ -111,6 +118,11 @@ export class TableTemplateComponent implements OnInit {
     } else {
       this.data = this.backupData.slice(startPage, endPage);
     }
+  }
+
+  provaEvento(object: any, action: string) {
+
+    this.outputEvento.emit([object, action]);
   }
 
 }

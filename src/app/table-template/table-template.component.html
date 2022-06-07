@@ -1,7 +1,7 @@
 <select #column>
   <option *ngFor="let column of tableConfig.search.column" >{{column}}</option>
 </select>
-<input type="text" (keyup)="data = search($event, column.value)">
+<input type="text" (keyup)="search($event, column.value)">
 
 <table border="1">
   <tr>
@@ -12,11 +12,13 @@
 
   <tr *ngFor="let d of data">
     <td *ngFor="let h of tableConfig.headers">{{d[h.key]}}</td>
-    <button type="button" (click)="action.emit(tableConfig.actions[1])" >Modifica</button>
-    <button type="button" (click)="action.emit(tableConfig.actions[2])" >Elimina</button>
+    <ng-container *ngFor="let action of tableConfig.actions">
+      <button (click)="provaEvento(d, action)">{{action}}</button>
+    </ng-container>
   </tr>
+
 </table>
-<button type="button" (click)="action.emit(tableConfig.actions[0])" >Aggiungi</button>
+<!--<button (click)="provaEvento(d, tableConfig.actions[1])">Prova</button>-->
 <button type="button" [disabled]="page === 0" (click)="prevPage()"> < </button>
 <button type="button" [disabled]="checkEnd(itemsPerPage * page + itemsPerPage)" (click)="nextPage()"> > </button>
 <select #pagination (change)="changePagination(pagination.value)">

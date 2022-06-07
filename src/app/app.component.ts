@@ -21,24 +21,27 @@ export class AppComponent {
   cars = CARS;
   actions: ActionsEnum[] = [ActionsEnum.NEW_ROW, ActionsEnum.EDIT, ActionsEnum.DELETE];
 
-  modifica: ButtonConfig = {
+  Modifica: ButtonConfig = {
     css: "btn btn-primary",
     text: "Modifica",
     type: "button"
   };
 
-  aggiungi: ButtonConfig = {
+  Aggiungi: ButtonConfig = {
     css: "btn btn-success",
     text: "Aggiungi",
     type: "button"
   };
 
-  testModifica(text: string) {
-    console.log("Premuto il tasto: ", text);
+  Elimina: ButtonConfig = {
+    css: "btn btn-danger",
+    text: "Elimina",
+    type: "button"
   }
 
-  testAggiungi(text: string) {
-    console.log("Premuto il tasto: ", text);
+  testTasto(text: any) {
+    console.log("Oggetto Passato: ", text[0]);
+    console.log("Bottone Premuto", text[1]);
   }
 
   headersUtenti: TableHeaders[] = [

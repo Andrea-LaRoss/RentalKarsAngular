@@ -1,8 +1,8 @@
 <app-header></app-header>
 <br>
-<app-configurable-button [config]="modifica" (generalEvent)="testModifica($event)"></app-configurable-button>
-<app-configurable-button [config]="aggiungi" (generalEvent)="testAggiungi($event)"></app-configurable-button>
+<app-configurable-button [config]="Modifica" (generalEvent)="testTasto($event)"></app-configurable-button>
+<app-configurable-button [config]="Aggiungi" (generalEvent)="testTasto($event)"></app-configurable-button>
 <br><br>
-<app-table-template [tableConfig]="utenti" [data]="users" (action)="onAction($event)"></app-table-template>
+<app-table-template [tableConfig]="utenti" [data]="users" (outputEvento)="testTasto($event)"></app-table-template>
 <br><br><br>
 <app-table-template [tableConfig]="auto" [data]="cars"></app-table-template>
