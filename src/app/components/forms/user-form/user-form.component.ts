@@ -25,8 +25,10 @@ export class UserFormComponent implements OnInit {
   }
 
   addOrUpdate (user: any) {
-    if(!USERS.find(u => u === user)) {
+    if(!USERS.find(u => u.email === user)) {
       USERS.push(user);
+    } else{
+      console.log("Utente findato");
     }
 
     this.router.navigate(['/users']);
