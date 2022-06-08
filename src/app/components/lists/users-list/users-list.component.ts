@@ -75,7 +75,7 @@ export class UsersListComponent implements OnInit {
         break;
 
       case "Modifica":
-        this.router.navigate(['/user_form', object.row]);
+        this.router.navigate(['/user_form', object.row.email]);
         break;
 
       case "Elimina":
