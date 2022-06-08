@@ -22,7 +22,6 @@ export class CarFormComponent implements OnInit {
     const routeParams = this.route.snapshot.paramMap;
     const carPlate = routeParams.get('car');
     this.car = CARS.find(c => c.numPlate === carPlate);
-    //this.model = this.car;
   }
 
   addOrUpdate (car: any) {
