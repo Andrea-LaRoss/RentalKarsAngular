@@ -27,7 +27,7 @@ export class UserFormComponent implements OnInit {
     if(!USERS.find(u => u.email === user.email)) {
       USERS.push(user);
     } else{
-      USERS.find(u => u.email === user.email)
+      USERS.filter(u => u.email === user.email)
       console.log("Utente trovato");
     }
 
