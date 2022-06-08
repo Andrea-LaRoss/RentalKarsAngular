@@ -15,6 +15,7 @@ import { UserFormComponent } from './components/forms/user-form/user-form.compon
 import { ReservationFormComponent } from './components/forms/reservation-form/reservation-form.component';
 import { CarFormComponent } from './components/forms/car-form/car-form.component';
 import {FormsModule} from "@angular/forms";
+import {USERS} from "./mock-data/mock-users";
 
 @NgModule({
   declarations: [
@@ -43,7 +44,9 @@ import {FormsModule} from "@angular/forms";
       {path: 'dashboard', component: DashboardComponent},
       {path: 'user_form', component: UserFormComponent},
       {path: 'reservation_form', component: ReservationFormComponent},
-      {path: 'car_form', component: CarFormComponent}])
+      {path: 'car_form', component: CarFormComponent},
+      {path: 'car_form/:car', component: CarFormComponent},
+      {path: 'user_form/:user', component: UserFormComponent}],)
   ],
   providers: [],
   bootstrap: [AppComponent]

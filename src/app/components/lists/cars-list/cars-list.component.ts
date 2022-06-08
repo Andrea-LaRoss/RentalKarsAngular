@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {CARS} from "../../../mock-data/mock-cars";
-import {TableHeaders} from "../../templates/table-template/config/table-headers";
-import {OrderTable} from "../../templates/table-template/config/order-table";
-import {SearchParams} from "../../templates/table-template/config/search-params";
-import {Actions, TableConfig} from "../../templates/table-template/config/table-config";
-import {TablePagination} from "../../templates/table-template/config/table-pagination";
-import {ActionsEnum} from "../../templates/table-template/config/actions-enum";
+import { Router } from "@angular/router";
+import { CARS } from "../../../mock-data/mock-cars";
+import { TableHeaders } from "../../templates/table-template/config/table-headers";
+import { OrderTable } from "../../templates/table-template/config/order-table";
+import { SearchParams } from "../../templates/table-template/config/search-params";
+import { Actions, TableConfig } from "../../templates/table-template/config/table-config";
+import { TablePagination } from "../../templates/table-template/config/table-pagination";
+import { ActionsEnum } from "../../templates/table-template/config/actions-enum";
 
 @Component({
   selector: 'app-cars-list',
@@ -61,19 +62,20 @@ export class CarsListComponent implements OnInit {
     actions: this.actions
   };
 
-  constructor() { }
+  constructor(private router: Router) {
+  }
 
   ngOnInit(): void {
   }
 
   onAction(object: any) {
-    switch(object.action) {
+    switch (object.action) {
       case "Aggiungi":
-        console.log("Aggiungi (questa funzione dopo)");
+        this.router.navigate(['/car_form']);
         break;
 
       case "Modifica":
-        console.log("Modifica (il codice così questa parte funziona)");
+        this.router.navigate(['/car_form', object.row.numPlate]);
         break;
 
       case "Elimina":
