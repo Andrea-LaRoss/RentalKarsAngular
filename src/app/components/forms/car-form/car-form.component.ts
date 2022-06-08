@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { CARS } from "../../../mock-data/mock-cars";
 import { Car } from "../../../mock-data/car";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-car-form',
@@ -11,7 +12,7 @@ import { Car } from "../../../mock-data/car";
 export class CarFormComponent implements OnInit {
   car!: Car;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -21,6 +22,8 @@ export class CarFormComponent implements OnInit {
     if(!CARS.find(c => c === car)) {
       CARS.push(car);
     }
+
+    this.router.navigate(['/users']);
   }
 
 }

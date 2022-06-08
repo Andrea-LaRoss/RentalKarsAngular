@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {USERS} from "../../../mock-data/mock-users";
-import {Actions, TableConfig} from "../../templates/table-template/config/table-config";
-import {ActionsEnum} from "../../templates/table-template/config/actions-enum";
-import {TableHeaders} from "../../templates/table-template/config/table-headers";
-import {TablePagination} from "../../templates/table-template/config/table-pagination";
-import {OrderTable} from "../../templates/table-template/config/order-table";
-import {SearchParams} from "../../templates/table-template/config/search-params";
+import { Router } from "@angular/router";
+
+import { USERS } from "../../../mock-data/mock-users";
+import { Actions, TableConfig } from "../../templates/table-template/config/table-config";
+import { ActionsEnum } from "../../templates/table-template/config/actions-enum";
+import { TableHeaders } from "../../templates/table-template/config/table-headers";
+import { TablePagination } from "../../templates/table-template/config/table-pagination";
+import { OrderTable } from "../../templates/table-template/config/order-table";
+import { SearchParams } from "../../templates/table-template/config/search-params";
+
 
 @Component({
   selector: 'app-users-list',
@@ -60,7 +63,7 @@ export class UsersListComponent implements OnInit {
     actions: this.actions
   };
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -68,11 +71,11 @@ export class UsersListComponent implements OnInit {
   onAction(object: any) {
     switch(object.action) {
       case "Aggiungi":
-        console.log("Aggiungi (questa funzione dopo)");
+        this.router.navigate(['/user_form']);
         break;
 
       case "Modifica":
-        console.log("Modifica (il codice così questa parte funziona)");
+        this.router.navigate(['/user_form']);
         break;
 
       case "Elimina":

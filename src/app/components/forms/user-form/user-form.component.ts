@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { USERS } from "../../../mock-data/mock-users";
 import { User } from "../../../mock-data/user";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-user-form',
@@ -11,7 +12,7 @@ import { User } from "../../../mock-data/user";
 export class UserFormComponent implements OnInit {
   user!: User;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -20,6 +21,8 @@ export class UserFormComponent implements OnInit {
     if(!USERS.find(u => u === user)) {
       USERS.push(user);
     }
+
+    this.router.navigate(['/users']);
   }
 
 }
