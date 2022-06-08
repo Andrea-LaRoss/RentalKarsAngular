@@ -3,4 +3,5 @@ export interface Car {
   model: string;
   type: string;
   numPlate: string;
+  regDate: string;
 }

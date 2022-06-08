@@ -14,6 +14,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { UserFormComponent } from './components/forms/user-form/user-form.component';
 import { ReservationFormComponent } from './components/forms/reservation-form/reservation-form.component';
 import { CarFormComponent } from './components/forms/car-form/car-form.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { CarFormComponent } from './components/forms/car-form/car-form.component
 
   imports: [
     BrowserModule,
+    FormsModule,
     RouterModule.forRoot([
       {path: '', component: HomepageComponent},
       {path: 'cars', component: CarsListComponent},
