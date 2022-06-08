@@ -7,24 +7,24 @@
   <form #car="ngForm" (ngSubmit)="addOrUpdate(car.value)">
     <div class="form-group">
       <div class="form-floating mb-4">
-        <input type="text" class="form-control" ngModel [(ngModel)]="model.brand" id="brand" required>
+        <input type="text" class="form-control" ngModel [value]="model.brand" id="brand" required>
         <label for="brand">Marca</label>
       </div>
       <div class="form-floating mb-4">
-        <input type="text" class="form-control" ngModel [(ngModel)]="model.model" id="model" required>
+        <input type="text" class="form-control" ngModel [value]="model.model" id="model" required>
         <label for="model">Modello</label>
       </div>
       <div class="form-floating mb-4">
-        <input type="text" class="form-control" ngModel [(ngModel)]="model.type" id="type" required>
+        <input type="text" class="form-control" ngModel [value]="model.type" id="type" required>
         <label for="type">Tipo</label>
       </div>
       <div class="form-floating mb-4">
-        <input type="text" class="form-control" ngModel [(ngModel)]="model.numPlate" id="numPlate" required>
+        <input type="text" class="form-control" ngModel [value]="model.numPlate" id="numPlate" required>
         <label for="numPlate">Targa</label>
       </div>
     </div>
     <div class="form-floating mb-4">
-      <input type="date" class="form-control" ngModel  [(ngModel)]="model.regDate" id="regDate" required>
+      <input type="date" class="form-control" ngModel  [value]="model.regDate" id="regDate" required>
       <label for="regDate">Immatricolazione</label>
     </div>
 

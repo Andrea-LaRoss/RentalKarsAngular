@@ -13,7 +13,7 @@ export class CarFormComponent implements OnInit {
 
   car: Car | undefined;
 
-  model = {brand: "Fiat", model: "Panda", type: "Utilitaria", numPlate: "AA000AA", regDate:"01-02-1990"};
+  model: any;
 
 
   constructor(private router: Router, private route: ActivatedRoute) { }
@@ -22,6 +22,7 @@ export class CarFormComponent implements OnInit {
     const routeParams = this.route.snapshot.paramMap;
     const carPlate = routeParams.get('car');
     this.car = CARS.find(c => c.numPlate === carPlate);
+    this.model = this.car;
   }
 
   addOrUpdate (car: any) {
