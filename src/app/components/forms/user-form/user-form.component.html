@@ -4,7 +4,7 @@
 </div>
 
 <div class="container">
-  <form #user="ngForm" (ngSubmit)="addOrUpdate(user.value.email)">
+  <form #user="ngForm" (ngSubmit)="addOrUpdate(user.value)">
     <div class="form-group">
       <div class="form-floating mb-4">
         <input type="text" class="form-control" ngModel [(ngModel)]="model.firstName" name="firstName" id="firstName" required>

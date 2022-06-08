@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from "@angular/router";
 
 import { USERS } from "../../../mock-data/mock-users";
 import { User } from "../../../mock-data/user";
-import {ActivatedRoute, Router} from "@angular/router";
-import {CARS} from "../../../mock-data/mock-cars";
 
 @Component({
   selector: 'app-user-form',
@@ -25,10 +24,11 @@ export class UserFormComponent implements OnInit {
   }
 
   addOrUpdate (user: any) {
-    if(!USERS.find(u => u.email === user)) {
+    if(!USERS.find(u => u.email === user.email)) {
       USERS.push(user);
     } else{
-      console.log("Utente findato");
+      USERS.find(u => u.email === user.email)
+      console.log("Utente trovato");
     }
 
     this.router.navigate(['/users']);
