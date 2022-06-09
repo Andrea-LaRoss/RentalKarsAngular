@@ -68,7 +68,8 @@ export class CarsListComponent implements OnInit {
   }
 
   getCars(): void {
-    this.cars = this.carsService.getCars();
+    this.carsService.getCars()
+      .subscribe(cars => this.cars = cars);
   }
 
   ngOnInit(): void {

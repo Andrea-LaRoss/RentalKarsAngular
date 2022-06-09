@@ -1,23 +1,23 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable, of } from "rxjs";
-import { Car } from "../mock-data/car";
+import { User } from "../mock-data/user";
 
 @Injectable({
   providedIn: 'root'
 })
-export class CarsService {
+export class UsersService {
 
-  private carsUrl = 'api/cars';
+  private usersUrl = 'api/users';
 
   constructor(private http: HttpClient) { }
 
   private log(message: string) {
-    console.log("CarService: ", message);
+    console.log("UsersService: ", message);
   }
 
-  getCars(): Observable<Car[]> {
-    this.log("Eroi abbuscati");
-    return this.http.get<Car[]>(this.carsUrl);
+  getUsers(): Observable<User[]> {
+    this.log("Utenti abbuscati");
+    return this.http.get<User[]>(this.usersUrl);
   }
 }

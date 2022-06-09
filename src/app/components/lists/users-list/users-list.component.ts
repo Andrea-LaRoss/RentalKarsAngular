@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 
-import { USERS } from "../../../mock-data/mock-users";
 import { Actions, TableConfig } from "../../templates/table-template/config/table-config";
 import { ActionsEnum } from "../../templates/table-template/config/actions-enum";
 import { TableHeaders } from "../../templates/table-template/config/table-headers";
 import { TablePagination } from "../../templates/table-template/config/table-pagination";
 import { OrderTable } from "../../templates/table-template/config/order-table";
 import { SearchParams } from "../../templates/table-template/config/search-params";
+
+import { User } from "../../../mock-data/user";
+import { UsersService } from "../../../services/users.service";
 
 
 @Component({
@@ -17,7 +19,7 @@ import { SearchParams } from "../../templates/table-template/config/search-param
 })
 export class UsersListComponent implements OnInit {
 
-  users = USERS;
+  users: User[] = [];
 
   actions: Actions[] = [
     {
@@ -63,9 +65,15 @@ export class UsersListComponent implements OnInit {
     actions: this.actions
   };
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private usersService: UsersService) { }
 
   ngOnInit(): void {
+    this.getUsers();
+  }
+
+  getUsers(): void{
+    this.usersService.getUsers()
+      .subscribe(users => this.users = users);
   }
 
   onAction(object: any) {

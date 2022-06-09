@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
+
 import { Actions, TableConfig } from "../../templates/table-template/config/table-config";
 import { ActionsEnum } from "../../templates/table-template/config/actions-enum";
 import { TableHeaders } from "../../templates/table-template/config/table-headers";
 import { OrderTable } from "../../templates/table-template/config/order-table";
 import { SearchParams } from "../../templates/table-template/config/search-params";
 import { TablePagination } from "../../templates/table-template/config/table-pagination";
-import { RESERVATIONS } from "../../../mock-data/mock-reservations";
+import { Reservations } from "../../../mock-data/reservations";
+
+import { ReservationsService } from "../../../services/reservations.service";
 
 @Component({
   selector: 'app-rent-list',
@@ -14,7 +18,7 @@ import { RESERVATIONS } from "../../../mock-data/mock-reservations";
 })
 export class RentListComponent implements OnInit {
 
-  reservations = RESERVATIONS;
+  reservations: Reservations[] = [];
 
   actions: Actions[] = [
     {
@@ -61,9 +65,15 @@ export class RentListComponent implements OnInit {
     actions: this.actions
   }
 
-  constructor() { }
+  constructor(private router: Router, private reservationsService: ReservationsService) { }
 
   ngOnInit(): void {
+    this.getReservations();
+  }
+
+  getReservations(): void {
+    this.reservationsService.getReservations()
+      .subscribe(reservations => this.reservations = reservations);
   }
 
   onAction(object: any) {
