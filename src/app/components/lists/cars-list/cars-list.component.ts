@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
-import { CARS } from "../../../mock-data/mock-cars";
+
 import { TableHeaders } from "../../templates/table-template/config/table-headers";
 import { OrderTable } from "../../templates/table-template/config/order-table";
 import { SearchParams } from "../../templates/table-template/config/search-params";
 import { Actions, TableConfig } from "../../templates/table-template/config/table-config";
 import { TablePagination } from "../../templates/table-template/config/table-pagination";
 import { ActionsEnum } from "../../templates/table-template/config/actions-enum";
+import { Car } from "../../../mock-data/car";
+import { CarsService } from "../../../services/cars.service";
 
 @Component({
   selector: 'app-cars-list',
@@ -15,7 +17,7 @@ import { ActionsEnum } from "../../templates/table-template/config/actions-enum"
 })
 export class CarsListComponent implements OnInit {
 
-  cars = CARS;
+  cars: Car[] = [];
 
   actions: Actions[] = [
     {
@@ -62,7 +64,7 @@ export class CarsListComponent implements OnInit {
     actions: this.actions
   };
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private carsService: CarsService) {
   }
 
   ngOnInit(): void {
