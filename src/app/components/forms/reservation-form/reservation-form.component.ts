@@ -23,7 +23,7 @@ export class ReservationFormComponent implements OnInit {
   }
 
   addOrUpdate (reservation: any) {
-    if(this.reservationId == 0) {
+    if(this.reservationId == null) {
       console.log("Aggiunta");
       this.reservationsService.addReservation(reservation).subscribe(() => this.router.navigate(['/reservations']))
     } else {
