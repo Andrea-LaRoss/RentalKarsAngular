@@ -79,16 +79,16 @@ export class RentListComponent implements OnInit {
   onAction(object: any) {
     switch(object.action) {
       case "Aggiungi":
-        console.log("Aggiungi (questa funzione dopo)");
+        this.router.navigate(['/reservation_form']);
         break;
 
       case "Modifica":
-        console.log("Modifica (il codice così questa parte funziona)");
+        this.router.navigate(['/reservation_form', object.row.id]);
         break;
 
       case "Elimina":
-        console.log("Eliminazione: ", object.row);
         this.reservations = this.reservations.filter(r => r !== object.row);
+        this.reservationsService.deleteReservation(object.row.id).subscribe();
     }
   }
 

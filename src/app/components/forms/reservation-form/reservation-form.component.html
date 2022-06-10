@@ -4,17 +4,18 @@
 </div>
 
 <div class="container">
-  <form action="#" method="GET">
+  <form #reservation="ngForm" (ngSubmit)="addOrUpdate(reservation.value)">
     <div class="form-floating mb-4">
-      <input type="date" class="form-control" name="startDate" id="startDate" required>
+      <input type="date" class="form-control" [(ngModel)]="model['startDate']" name="startDate" id="startDate" required>
       <label for="startDate">Inizio Periodo</label>
     </div>
     <div class="form-floating mb-4">
-      <input type="date" class="form-control" name="endDate" id="endDate" required>
+      <input type="date" class="form-control" [(ngModel)]="model['endDate']" name="endDate" id="endDate" required>
       <label for="endDate">Fine Periodo</label>
     </div>
 
     <div class="d-grid gap-2">
+      <input type="hidden" [(ngModel)]="model['id']" name="id" [value]="model['id']">
       <input class="btn btn-lg btn-primary" type="submit" value="Invia">
     </div>
 

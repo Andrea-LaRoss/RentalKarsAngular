@@ -51,7 +51,9 @@ import { InMemoryDataService } from "./services/in-memory-data.service";
       {path: 'reservation_form', component: ReservationFormComponent},
       {path: 'car_form', component: CarFormComponent},
       {path: 'car_form/:carId', component: CarFormComponent},
-      {path: 'user_form/:userId', component: UserFormComponent}],)
+      {path: 'user_form/:userId', component: UserFormComponent},
+      {path: 'reservation_form/:reservationId', component: ReservationFormComponent}],
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]
