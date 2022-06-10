@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 
-import { USERS } from "../../../mock-data/mock-users";
-import { User } from "../../../mock-data/user";
+import { UsersService } from "../../../services/users.service";
 
 @Component({
   selector: 'app-user-form',
@@ -10,28 +9,27 @@ import { User } from "../../../mock-data/user";
   styleUrls: ['./user-form.component.css']
 })
 export class UserFormComponent implements OnInit {
-  user: User | undefined;
 
-  model:any;
+  userId: any;
+  model: any = {};
 
-  constructor(private router: Router, private route: ActivatedRoute) { }
+
+  constructor(private router: Router, private route: ActivatedRoute, private usersService: UsersService) { }
 
   ngOnInit(): void {
     const routeParams = this.route.snapshot.paramMap;
-    const userMail = routeParams.get('user');
-    this.user = USERS.find(c => c.email === userMail);
-    this.model = this.user;
+    this.userId = routeParams.get('userId');
+    this.usersService.getUser(+this.userId).subscribe((result: any) => {
+      this.model = result;
+    });
   }
 
   addOrUpdate (user: any) {
-    if(!USERS.find(u => u.email === user.email)) {
-      USERS.push(user);
-    } else{
-      USERS.filter(u => u.email === user.email)
-      console.log("Utente trovato");
+    if(this.userId == 0) {
+      this.usersService.addUser(user).subscribe(() => this.router.navigate(['/users']))
+    } else {
+      this.usersService.updateUser(user).subscribe(() => this.router.navigate(['/users']));
     }
-
-    this.router.navigate(['/users']);
   }
 
 }

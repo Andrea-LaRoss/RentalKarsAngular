@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { CARS } from "../../../mock-data/mock-cars";
-import { Car } from "../../../mock-data/car";
 import { ActivatedRoute, Router } from "@angular/router";
+import {CarsService} from "../../../services/cars.service";
 
 @Component({
   selector: 'app-car-form',
@@ -11,27 +10,26 @@ import { ActivatedRoute, Router } from "@angular/router";
 })
 export class CarFormComponent implements OnInit {
 
-  car: Car | undefined;
+  carId: any;
+  model: any = {};
 
-  model: any;
 
-
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  constructor(private router: Router, private route: ActivatedRoute, private carsService: CarsService) { }
 
   ngOnInit(): void {
     const routeParams = this.route.snapshot.paramMap;
-    const carPlate = routeParams.get('car');
-    this.car = CARS.find(c => c.numPlate === carPlate);
-    this.model = this.car;
+    this.carId = routeParams.get('carId');
+      this.carsService.getCar(+this.carId).subscribe((result: any) => {
+      this.model = result;
+    });
   }
 
   addOrUpdate (car: any) {
-    console.log(car);
-    if(!CARS.find(c => c === car)) {
-      CARS.push(car);
+    if(this.carId == 0) {
+      this.carsService.addCar(car).subscribe(() => this.router.navigate(['/cars']))
+    } else {
+      this.carsService.updateCar(car).subscribe(() => this.router.navigate(['/cars']));
     }
-
-    this.router.navigate(['/users']);
   }
 
 }

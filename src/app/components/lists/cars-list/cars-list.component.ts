@@ -83,12 +83,12 @@ export class CarsListComponent implements OnInit {
         break;
 
       case "Modifica":
-        this.router.navigate(['/car_form', object.row.numPlate]);
+        this.router.navigate(['/car_form', object.row.id]);
         break;
 
       case "Elimina":
-        console.log("Eliminazione: ", object.row);
         this.cars = this.cars.filter(c => c !== object.row);
+        this.carsService.deleteCar(object.row.id).subscribe();
     }
   }
 

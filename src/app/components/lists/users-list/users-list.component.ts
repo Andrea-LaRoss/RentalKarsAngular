@@ -77,18 +77,18 @@ export class UsersListComponent implements OnInit {
   }
 
   onAction(object: any) {
-    switch(object.action) {
+    switch (object.action) {
       case "Aggiungi":
         this.router.navigate(['/user_form']);
         break;
 
       case "Modifica":
-        this.router.navigate(['/user_form', object.row.email]);
+        this.router.navigate(['/user_form', object.row.id]);
         break;
 
       case "Elimina":
-        console.log("Eliminazione: ", object.row);
         this.users = this.users.filter(u => u !== object.row);
+        this.usersService.deleteUser(object.row.id).subscribe();
     }
   }
 }
