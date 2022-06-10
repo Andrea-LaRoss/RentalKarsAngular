@@ -8,5 +8,4 @@ export const CARS: Car[] = [
   {id: 4, brand: "Alfa Romeo", model: "Mito", type: "Sportiva", numPlate: "AA003AA", regDate: "01-02-1990"},
   {id: 5, brand: "Audi", model: "A1", type: "Ho finito i nomi", numPlate: "AA004AA", regDate: "01-02-1990"},
   {id: 6, brand: "Bmw", model: "118d", type: "Coupé", numPlate: "AA005AA", regDate: "01-02-1990"}
-
 ];

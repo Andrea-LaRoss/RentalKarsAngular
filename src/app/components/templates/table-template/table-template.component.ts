@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TableConfig } from "./config/table-config";
-import {ButtonConfig} from "../button-template/config/button-config";
-import {ActionsEnum} from "./config/actions-enum";
+import { ButtonConfig } from "../button-template/config/button-config";
+import { ActionsEnum } from "./config/actions-enum";
 
 @Component({
   selector: 'app-table-template',
@@ -43,7 +43,7 @@ export class TableTemplateComponent implements OnInit {
   ngOnInit(): void {
     this.changeOrder(this.data, this.tableConfig.order.defaultColumn, this.tableConfig.order.orderType);
     this.backupData = this.data;
-    this.data = this.backupData.slice(0,this.tableConfig.pagination.itemPerPage);
+    this.data = this.backupData.slice(0,3);
     this.itemsPerPage = this.tableConfig.pagination.itemPerPage;
     this.page = 0;
   }

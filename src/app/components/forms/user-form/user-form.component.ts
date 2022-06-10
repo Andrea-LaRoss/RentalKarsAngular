@@ -13,7 +13,6 @@ export class UserFormComponent implements OnInit {
   userId: any;
   model: any = {};
 
-
   constructor(private router: Router, private route: ActivatedRoute, private usersService: UsersService) { }
 
   ngOnInit(): void {
@@ -25,6 +24,7 @@ export class UserFormComponent implements OnInit {
   }
 
   addOrUpdate (user: any) {
+    console.log(user);
     if(this.userId == 0) {
       this.usersService.addUser(user).subscribe(() => this.router.navigate(['/users']))
     } else {
