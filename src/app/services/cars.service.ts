@@ -55,5 +55,4 @@ export class CarsService {
       .pipe(tap(_ => this.log('Eliminata auto id: '+ id)), catchError(this.handleError<Car>('deleteCar')));
   }
 
-
 }

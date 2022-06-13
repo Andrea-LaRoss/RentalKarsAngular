@@ -70,7 +70,6 @@ export class CarsListComponent implements OnInit {
   getCars(): void {
     this.carsService.getCars()
       .subscribe(cars => this.cars = cars);
-    console.log(this.cars);
   }
 
   ngOnInit(): void {

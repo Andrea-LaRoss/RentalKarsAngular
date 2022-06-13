@@ -31,12 +31,12 @@ export class InMemoryDataService {
     ];
 
     let reservations: Reservations[] = [
-      {id: 1, startDate: "2022-01-01", endDate:"2022-01-02", car: cars[0].brand + ' ' + cars[0].model, user: users[0].email},
-      {id: 2, startDate: "2022-01-03", endDate:"2022-01-04", car: cars[1].brand + ' ' + cars[1].model, user: users[1].email},
-      {id: 3, startDate: "2022-01-05", endDate:"2022-01-06", car: cars[2].brand + ' ' + cars[2].model, user: users[2].email},
-      {id: 4, startDate: "2022-01-07", endDate:"2022-01-08", car: cars[3].brand + ' ' + cars[3].model, user: users[3].email},
-      {id: 5, startDate: "2022-01-09", endDate:"2022-01-10", car: cars[4].brand + ' ' + cars[4].model, user: users[4].email},
-      {id: 6, startDate: "2022-01-11", endDate:"2022-01-12", car: cars[5].brand + ' ' + cars[5].model, user: users[5].email},
+      {id: 1, startDate: "2022-01-01", endDate:"2022-01-02", car: cars[0].numPlate, user: users[0].email},
+      {id: 2, startDate: "2022-01-03", endDate:"2022-01-04", car: cars[1].numPlate, user: users[1].email},
+      {id: 3, startDate: "2022-01-05", endDate:"2022-01-06", car: cars[2].numPlate, user: users[2].email},
+      {id: 4, startDate: "2022-01-07", endDate:"2022-01-08", car: cars[3].numPlate, user: users[3].email},
+      {id: 5, startDate: "2022-01-09", endDate:"2022-01-10", car: cars[4].numPlate, user: users[4].email},
+      {id: 6, startDate: "2022-01-11", endDate:"2022-01-12", car: cars[5].numPlate, user: users[5].email},
     ];
 
     return {cars, users, reservations};
@@ -53,4 +53,6 @@ export class InMemoryDataService {
   genId(reservations: Reservations[]): number {
     return reservations.length > 0 ? Math.max(...reservations.map(reservation => reservation.id)) + 1 : 0;
   }
+
+
 }

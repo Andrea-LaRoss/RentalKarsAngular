@@ -10,6 +10,7 @@ import {SearchParams} from "../../templates/table-template/config/search-params"
 import {TablePagination} from "../../templates/table-template/config/table-pagination";
 import {CarsService} from "../../../services/cars.service";
 import {Reservations} from "../../../interfaces/reservations";
+import {filter} from "rxjs";
 
 @Component({
   selector: 'app-reservation-form',
@@ -91,7 +92,6 @@ export class ReservationFormComponent implements OnInit {
 
   onAction(object:any) {
     this.reservation.car = object.row;
-    console.log(this.reservation);
     if(this.reservationId == null) {
       console.log("Aggiungi");
       this.reservationsService.addReservation(this.reservation).subscribe(() => this.router.navigate(['/reservations']));;
