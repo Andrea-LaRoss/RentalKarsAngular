@@ -19,9 +19,11 @@ export class CarFormComponent implements OnInit {
   ngOnInit(): void {
     const routeParams = this.route.snapshot.paramMap;
     this.carId = routeParams.get('carId');
+    if(this.carId != null) {
       this.carsService.getCar(+this.carId).subscribe((result: any) => {
-      this.model = result;
-    });
+        this.model = result;
+      });
+    }
   }
 
   addOrUpdate (car: any) {

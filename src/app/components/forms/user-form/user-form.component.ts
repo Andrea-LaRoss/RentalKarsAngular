@@ -18,15 +18,17 @@ export class UserFormComponent implements OnInit {
   ngOnInit(): void {
     const routeParams = this.route.snapshot.paramMap;
     this.userId = routeParams.get('userId');
-    this.usersService.getUser(+this.userId).subscribe((result: any) => {
-      this.model = result;
-    });
+    if(this.userId != null) {
+      this.usersService.getUser(+this.userId).subscribe((result: any) => {
+        this.model = result;
+      });
+    }
   }
 
   addOrUpdate (user: any) {
     console.log(user);
     if(this.userId == null) {
-      this.usersService.addUser(user).subscribe(() => this.router.navigate(['/users']))
+      this.usersService.addUser(user).subscribe(() => this.router.navigate(['/users']));
     } else {
       this.usersService.updateUser(user).subscribe(() => this.router.navigate(['/users']));
     }

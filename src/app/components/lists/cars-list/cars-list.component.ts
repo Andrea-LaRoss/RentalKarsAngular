@@ -7,7 +7,7 @@ import { SearchParams } from "../../templates/table-template/config/search-param
 import { Actions, TableConfig } from "../../templates/table-template/config/table-config";
 import { TablePagination } from "../../templates/table-template/config/table-pagination";
 import { ActionsEnum } from "../../templates/table-template/config/actions-enum";
-import { Car } from "../../../mock-data/car";
+import { Car } from "../../../interfaces/car";
 import { CarsService } from "../../../services/cars.service";
 
 @Component({
@@ -70,6 +70,7 @@ export class CarsListComponent implements OnInit {
   getCars(): void {
     this.carsService.getCars()
       .subscribe(cars => this.cars = cars);
+    console.log(this.cars);
   }
 
   ngOnInit(): void {

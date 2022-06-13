@@ -4,7 +4,7 @@
 </div>
 
 <div class="container">
-  <form #reservation="ngForm" (ngSubmit)="addOrUpdate(reservation.value)">
+  <form #reservation="ngForm" (ngSubmit)="showCars(reservation.value)">
     <div class="form-floating mb-4">
       <input type="date" class="form-control" [(ngModel)]="model['startDate']" name="startDate" id="startDate" required>
       <label for="startDate">Inizio Periodo</label>
@@ -22,16 +22,7 @@
     <br><br><br>
 
     <div class="container">
-      <table class="table table-hover">
-        <thead>
-        <tr>
-          <th>Marca</th>
-          <th>Modello</th>
-          <th>Targa</th>
-        </tr>
-        </thead>
-
-      </table>
+      <app-table-template [tableConfig]="auto" [data]="cars" (outputEvento)="onAction($event)"></app-table-template>
     </div>
   </form>
 </div>

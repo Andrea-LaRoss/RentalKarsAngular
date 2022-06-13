@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import {catchError, Observable, of, tap} from "rxjs";
 
-import { User } from "../mock-data/user";
+import { User } from "../interfaces/user";
 
 @Injectable({
   providedIn: 'root'

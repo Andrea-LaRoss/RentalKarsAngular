@@ -4,13 +4,12 @@
 <input type="text" (keyup)="search($event, column.value)">
 
 <table class="table">
-  <thead>
   <tr>
-    <th scope="col" *ngFor="let header of tableConfig.headers" (click)="changeOrder(data, header.key, orderType)" >{{header.label}}
+    <th *ngFor="let header of tableConfig.headers" (click)="changeOrder(data, header.key, orderType)" >{{header.label}}
       <i [ngClass]="[orderType === 'asc' ? 'bi bi-arrow-down-short' : 'bi bi-arrow-up-short']"></i>
     </th>
   </tr>
-  </thead>
+
 
   <tr class="table-secondary" *ngFor="let d of data">
     <td *ngFor="let h of tableConfig.headers">{{d[h.key]}}</td>

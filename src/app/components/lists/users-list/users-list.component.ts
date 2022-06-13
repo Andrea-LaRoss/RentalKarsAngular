@@ -8,7 +8,7 @@ import { TablePagination } from "../../templates/table-template/config/table-pag
 import { OrderTable } from "../../templates/table-template/config/order-table";
 import { SearchParams } from "../../templates/table-template/config/search-params";
 
-import { User } from "../../../mock-data/user";
+import { User } from "../../../interfaces/user";
 import { UsersService } from "../../../services/users.service";
 
 

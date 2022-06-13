@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 
-import { Car } from "../mock-data/car";
-import { User } from "../mock-data/user";
-import { Reservations } from "../mock-data/reservations";
+import { Car } from "../interfaces/car";
+import { User } from "../interfaces/user";
+import { Reservations } from "../interfaces/reservations";
 
 @Injectable({
   providedIn: 'root'
