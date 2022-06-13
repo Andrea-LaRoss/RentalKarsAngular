@@ -2,9 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TableConfig } from "./config/table-config";
 import { ButtonConfig } from "../button-template/config/button-config";
 import { ActionsEnum } from "./config/actions-enum";
-import {catchError, Observable, of, tap} from "rxjs";
-import {HttpClient} from "@angular/common/http";
-import {waitForAsync} from "@angular/core/testing";
+import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: 'app-table-template',

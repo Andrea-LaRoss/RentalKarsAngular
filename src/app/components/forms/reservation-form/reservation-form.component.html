@@ -22,7 +22,7 @@
     <br><br><br>
 
     <div class="container">
-      <app-table-template [tableConfig]="auto" [data]="cars" (outputEvento)="onAction($event)"></app-table-template>
+      <app-table-template [tableConfig]="auto" [data]="cars" [backupData]="cars" (outputEvento)="onAction($event)"></app-table-template>
     </div>
   </form>
 </div>

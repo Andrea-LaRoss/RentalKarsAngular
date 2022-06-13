@@ -35,6 +35,11 @@ export class UsersListComponent implements OnInit {
     {
       action: ActionsEnum.DELETE,
       inRow: true
+    },
+
+    {
+      action: ActionsEnum.CONFIRM,
+      inRow: false
     }];
 
   headersUtenti: TableHeaders[] = [

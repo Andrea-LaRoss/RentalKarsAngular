@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router} from "@angular/router";
-import {ReservationsService} from "../../../services/reservations.service";
-import {Car} from "../../../interfaces/car";
-import {Actions, TableConfig} from "../../templates/table-template/config/table-config";
-import {ActionsEnum} from "../../templates/table-template/config/actions-enum";
-import {TableHeaders} from "../../templates/table-template/config/table-headers";
-import {OrderTable} from "../../templates/table-template/config/order-table";
-import {SearchParams} from "../../templates/table-template/config/search-params";
-import {TablePagination} from "../../templates/table-template/config/table-pagination";
-import {CarsService} from "../../../services/cars.service";
-import {Reservations} from "../../../interfaces/reservations";
-import {filter} from "rxjs";
+import { ActivatedRoute, Router } from "@angular/router";
+
+import { ReservationsService } from "../../../services/reservations.service";
+import { Car } from "../../../interfaces/car";
+import { Actions, TableConfig } from "../../templates/table-template/config/table-config";
+import {ActionsEnum } from "../../templates/table-template/config/actions-enum";
+import { TableHeaders } from "../../templates/table-template/config/table-headers";
+import { OrderTable } from "../../templates/table-template/config/order-table";
+import { SearchParams } from "../../templates/table-template/config/search-params";
+import { TablePagination } from "../../templates/table-template/config/table-pagination";
+import { CarsService } from "../../../services/cars.service";
 
 @Component({
   selector: 'app-reservation-form',
@@ -46,11 +45,16 @@ export class ReservationFormComponent implements OnInit {
 
     {
       action: ActionsEnum.EDIT,
-      inRow: true
+      inRow: false
     },
 
     {
       action: ActionsEnum.DELETE,
+      inRow: false
+    },
+
+    {
+      action: ActionsEnum.CONFIRM,
       inRow: true
     }];
 
@@ -91,7 +95,7 @@ export class ReservationFormComponent implements OnInit {
   }
 
   onAction(object:any) {
-    this.reservation.car = object.row;
+    this.reservation.car = object.row.numPlate;
     if(this.reservationId == null) {
       console.log("Aggiungi");
       this.reservationsService.addReservation(this.reservation).subscribe(() => this.router.navigate(['/reservations']));;

@@ -1,0 +1,25 @@
+<div class="container">
+  <h2>Form Utente</h2>
+  <br><br><br>
+</div>
+
+<div class="container">
+  <form #login="ngForm" (ngSubmit)="validateUser(login.value)">
+    <div class="form-group">
+      <div class="form-floating mb-4">
+        <input type="email" class="form-control" [(ngModel)]="model['email']" name="email" id="email" required>
+        <label for="email">Email</label>
+      </div>
+      <div class="form-floating mb-4">
+        <input type="password" class="form-control" [(ngModel)]="model['password']" name="password" id="password" required>
+        <label for="password">Password</label>
+      </div>
+
+
+      <div class="d-grid gap-2">
+        <input class="btn btn-lg btn-primary" type="submit" value="Salva">
+      </div>
+    </div>
+  </form>
+</div>
+

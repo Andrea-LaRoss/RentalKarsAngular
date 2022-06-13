@@ -1,3 +1,3 @@
 export enum ActionsEnum {
-  NEW_ROW = "Aggiungi", EDIT = "Modifica", DELETE = "Elimina"
+  NEW_ROW = "Aggiungi", EDIT = "Modifica", DELETE = "Elimina", CONFIRM = "Prenota"
 }

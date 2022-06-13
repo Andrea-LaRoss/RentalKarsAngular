@@ -34,6 +34,11 @@ export class RentListComponent implements OnInit {
     {
       action: ActionsEnum.DELETE,
       inRow: true
+    },
+
+    {
+      action: ActionsEnum.CONFIRM,
+      inRow: false
     }];
 
   headersPrenotazioni: TableHeaders[] = [

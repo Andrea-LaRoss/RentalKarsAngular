@@ -18,6 +18,7 @@ import { UserFormComponent } from './components/forms/user-form/user-form.compon
 import { ReservationFormComponent } from './components/forms/reservation-form/reservation-form.component';
 import { CarFormComponent } from './components/forms/car-form/car-form.component';
 import { InMemoryDataService } from "./services/in-memory-data.service";
+import { LoginFormComponent } from './components/forms/login-form/login-form.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { InMemoryDataService } from "./services/in-memory-data.service";
     DashboardComponent,
     UserFormComponent,
     ReservationFormComponent,
-    CarFormComponent
+    CarFormComponent,
+    LoginFormComponent
   ],
 
   imports: [
