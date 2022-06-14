@@ -6,14 +6,17 @@
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['cars']">Parco Auto</a>
         </li>
-
+            <ng-container *ngIf="!authService.isAdmin()">
               <li class="nav-item">
                 <a class="nav-link" [routerLink]="['dashboard']">Account</a>
               </li>
+            </ng-container>
 
+            <ng-container *ngIf="authService.isAdmin()">
               <li class="nav-item">
                 <a class="nav-link" [routerLink]="['dashboard']">Admin</a>
               </li>
+            </ng-container>
 
       </ul>
 
