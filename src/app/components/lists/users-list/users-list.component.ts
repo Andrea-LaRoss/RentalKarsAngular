@@ -59,7 +59,7 @@ export class UsersListComponent implements OnInit {
   }
 
   userColumns: SearchParams = {
-    column: ["email", "firstName", "lastName"]
+    column: ["Email", "Nome", "Cognome"]
   };
 
   utenti: TableConfig = {

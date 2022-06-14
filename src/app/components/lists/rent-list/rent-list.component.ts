@@ -54,7 +54,7 @@ export class RentListComponent implements OnInit {
   };
 
   rentColumns: SearchParams = {
-    column: ["startDate", "endDate", "car", "user"]
+    column: ["Inizio", "Fine", "Auto", "Utente"]
   };
 
   paginationDefault: TablePagination = {

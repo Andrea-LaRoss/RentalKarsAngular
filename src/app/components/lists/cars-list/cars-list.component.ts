@@ -53,7 +53,7 @@ export class CarsListComponent implements OnInit {
   }
 
   carColumns: SearchParams = {
-    column: ["brand", "model", "type", "numPlate"]
+    column: ["Marca", "Modello", "Tipo", "Targa"]
   };
 
   paginationDefault: TablePagination = {

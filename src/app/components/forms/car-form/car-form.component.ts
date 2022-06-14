@@ -27,12 +27,9 @@ export class CarFormComponent implements OnInit {
   }
 
   addOrUpdate (car: any) {
-    console.log(this.carId);
     if(this.carId == null) {
-      console.log("Aggiunta");
       this.carsService.addCar(car).subscribe(() => this.router.navigate(['/cars']))
     } else {
-      console.log("Modifica");
       this.carsService.updateCar(car).subscribe(() => this.router.navigate(['/cars']));
     }
   }

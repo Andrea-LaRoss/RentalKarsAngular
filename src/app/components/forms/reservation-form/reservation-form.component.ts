@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { ReservationsService } from "../../../services/reservations.service";
 import { Car } from "../../../interfaces/car";
 import { Actions, TableConfig } from "../../templates/table-template/config/table-config";
-import {ActionsEnum } from "../../templates/table-template/config/actions-enum";
+import { ActionsEnum } from "../../templates/table-template/config/actions-enum";
 import { TableHeaders } from "../../templates/table-template/config/table-headers";
 import { OrderTable } from "../../templates/table-template/config/order-table";
 import { SearchParams } from "../../templates/table-template/config/search-params";
@@ -21,6 +21,7 @@ export class ReservationFormComponent implements OnInit {
   reservationId: any;
   model: any = {};
   reservation: any;
+  rents: any;
 
 
   constructor(private router: Router, private route: ActivatedRoute, private reservationsService: ReservationsService, private carsService: CarsService) { }
@@ -33,6 +34,7 @@ export class ReservationFormComponent implements OnInit {
         this.model = result;
       });
     }
+    this.reservationsService.getReservations().subscribe(r => this.rents = r);
   }
 
   cars: Car[] = [];
@@ -71,7 +73,7 @@ export class ReservationFormComponent implements OnInit {
   }
 
   carColumns: SearchParams = {
-    column: ["brand", "model", "type", "numPlate"]
+    column: ["Marca", "Modello", "Type", "Targa"]
   };
 
   paginationDefault: TablePagination = {
@@ -92,15 +94,20 @@ export class ReservationFormComponent implements OnInit {
     this.reservation = reservation;
     this.carsService.getCars()
       .subscribe(cars => this.cars = cars);
+
+    for(let i = 0; i < this.rents.length; i++) {
+      if(this.reservation.startDate)
+      console.log(this.rents[i].startDate);
+      console.log(this.rents[i].endDate);
+    }
+    this.cars.filter( c => c.numPlate);
   }
 
   onAction(object:any) {
     this.reservation.car = object.row.numPlate;
     if(this.reservationId == null) {
-      console.log("Aggiungi");
       this.reservationsService.addReservation(this.reservation).subscribe(() => this.router.navigate(['/reservations']));;
     } else {
-      console.log("Modifica");
       this.reservationsService.updateReservation(this.reservation).subscribe(() => this.router.navigate(['/reservations']));;
     }
   }

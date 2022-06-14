@@ -54,7 +54,8 @@ import { LoginFormComponent } from './components/forms/login-form/login-form.com
       {path: 'car_form', component: CarFormComponent},
       {path: 'car_form/:carId', component: CarFormComponent},
       {path: 'user_form/:userId', component: UserFormComponent},
-      {path: 'reservation_form/:reservationId', component: ReservationFormComponent}],
+      {path: 'reservation_form/:reservationId', component: ReservationFormComponent},
+      {path: 'login_form', component: LoginFormComponent}],
     )
   ],
   providers: [],

@@ -1,8 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TableConfig } from "./config/table-config";
-import { ButtonConfig } from "../button-template/config/button-config";
 import { ActionsEnum } from "./config/actions-enum";
-import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: 'app-table-template',
@@ -18,7 +16,7 @@ export class TableTemplateComponent implements OnInit {
 
   @Output() outputEvento = new EventEmitter();
 
-  @Input() backupData!: any[];
+  backupData!: any[];
 
   orderType: string = "asc";
 
@@ -26,26 +24,21 @@ export class TableTemplateComponent implements OnInit {
 
   page!: number;
 
+  maxPage!: number;
 
-  constructor(private http: HttpClient) {}
 
-   PrevPage: ButtonConfig = {
-    css: "btn btn-primary",
-    text: "<",
-    type: "button",
-  };
-
-  NextPage: ButtonConfig = {
-    css: "btn btn-primary",
-    text: ">",
-    type: "button"
-  };
+  constructor() {}
 
   ngOnInit(): void {
     this.changeOrder(this.data, this.tableConfig.order.defaultColumn, this.tableConfig.order.orderType);
     this.itemsPerPage = this.tableConfig.pagination.itemPerPage;
-    this.data = this.backupData.slice(0,this.itemsPerPage);
     this.page = 0;
+  }
+
+  ngOnChanges(): void {
+    this.backupData = this.data;
+    this.data = this.backupData.slice(0,this.itemsPerPage);
+    this.maxPage = this.backupData.length/this.itemsPerPage;
   }
 
 
@@ -65,7 +58,6 @@ export class TableTemplateComponent implements OnInit {
       if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
         return 0;
       }
-
       const varA = (typeof a[key] === 'string')
         ? a[key].toUpperCase() : a[key];
       const varB = (typeof b[key] === 'string')
@@ -84,22 +76,27 @@ export class TableTemplateComponent implements OnInit {
   }
 
 
-  search(input: any, columns: any ): void {
+  search(input: any, column: any ): void {
+    const headersObject = this.tableConfig.headers;
     const value = input.target.value.toLowerCase();
     const filteredList: any[] = [];
-    for (let i = 0; i < this.backupData.length; i++) {
-      if (this.backupData[i][columns].toLowerCase().includes(value)) {
-        console.log(this.backupData[i][columns]);
-        filteredList.push(this.backupData[i]);
+    const key = headersObject.find((item:any) => item.label === column);
+    if(key) {
+      for (let i = 0; i < this.backupData.length; i++) {
+        if (this.backupData[i][key.key].toLowerCase().includes(value)) {
+          filteredList.push(this.backupData[i]);
+        }
       }
-    }
-    if (filteredList.length > 0 || value.toString().length > 0) {
-      this.data = filteredList;
+      if (filteredList.length > 0 || value.toString().length > 0) {
+        this.data = filteredList;
+      }
     }
   }
 
-  changePagination(itemsPerPage: string): void {
+
+  changePagination(itemsPerPage: any): void {
     this.itemsPerPage = Number(itemsPerPage);
+    this.maxPage = Math.ceil(this.backupData.length/this.itemsPerPage);
     this.page = 0;
     this.data = this.backupData.slice(0,this.itemsPerPage);
   }
@@ -109,16 +106,11 @@ export class TableTemplateComponent implements OnInit {
     this.page++;
     let startPage: number = this.itemsPerPage * this.page;
     let endPage: number = startPage + this.itemsPerPage;
-    if(this.checkEnd(endPage)){
+    if(this.page == this.maxPage){
       this.data = this.backupData.slice(startPage);
     } else {
       this.data = this.backupData.slice(startPage, endPage);
     }
-  }
-
-
-  checkEnd(endPage: number): boolean {
-    return endPage >= this.backupData.length;
   }
 
 
@@ -133,12 +125,14 @@ export class TableTemplateComponent implements OnInit {
     }
   }
 
+
   takeAction(object: any, action: string) {
     this.outputEvento.emit({
       row: object,
       action: action
     });
   }
+
 
   getConfig(action: ActionsEnum) {
     return {css: 'btn btn-secondary', text: action, type: 'button'};

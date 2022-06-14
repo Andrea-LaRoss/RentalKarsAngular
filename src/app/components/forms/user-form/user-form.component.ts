@@ -26,7 +26,6 @@ export class UserFormComponent implements OnInit {
   }
 
   addOrUpdate (user: any) {
-    console.log(user);
     if(this.userId == null) {
       this.usersService.addUser(user).subscribe(() => this.router.navigate(['/users']));
     } else {
