@@ -20,10 +20,11 @@ export class LoginFormComponent implements OnInit {
   }
 
   validateUser(login: any) {
-    if(this.authService.login(login.email, login.password)) {
-      console.log(this.authService.login(login.email, login.password));
-      this.router.navigate(['/']);
-    }
+    this.authService.login(login.email, login.password)
+      .subscribe( () =>  {
+        console.log("Utente loggato");
+        this.router.navigateByUrl('/');
+      });
   }
 
 }
