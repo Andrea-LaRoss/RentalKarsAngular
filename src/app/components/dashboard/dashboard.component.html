@@ -1,10 +1,12 @@
 <h1>La tua dashboard</h1>
 <br><br>
-<a [routerLink]="['/users']">Vai alla lista utenti</a>|
+<ng-container *ngIf="authService.isAdmin()">
+<a  [routerLink]="['/users']">Vai alla lista utenti</a>|
 <a [routerLink]="['/user_form']">Aggiungi Utente</a>
+</ng-container>
 <br><br>
 <a [routerLink]="['/reservations']">Vai alle prenotazioni</a>|
-<a [routerLink]="['/reservation_form']">Aggiungi Prenotazione</a>
+<a *ngIf="!authService.isAdmin()"[routerLink]="['/reservation_form']">Aggiungi Prenotazione</a>
 <br><br>
 <a [routerLink]="['/cars']">Vai alla lista auto</a>|
-<a [routerLink]="['/car_form']">Aggiungi Auto</a>
+<a *ngIf="authService.isAdmin()" [routerLink]="['/car_form']">Aggiungi Auto</a>

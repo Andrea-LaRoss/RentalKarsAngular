@@ -77,7 +77,7 @@ export class ReservationFormComponent implements OnInit {
   };
 
   paginationDefault: TablePagination = {
-    itemPerPage: 3,
+    itemPerPage: 6,
     itemPerPageOptions: [1, 2, 3, 4, 5, 6]
   }
 
@@ -96,19 +96,21 @@ export class ReservationFormComponent implements OnInit {
       .subscribe(cars => this.cars = cars);
 
     for(let i = 0; i < this.rents.length; i++) {
-      if(this.reservation.startDate)
-      console.log(this.rents[i].startDate);
-      console.log(this.rents[i].endDate);
+      if(this.rents[i].startDate >= this.reservation.startDate && this.rents[i].startDate <= this.reservation.endDate ||
+        this.rents[i].endDate >= this.reservation.startDate && this.rents[i].endDate <= this.reservation.endDate) {
+        this.cars.filter( c => c.numPlate === this.rents[i].numPlate);
+      }
+
     }
-    this.cars.filter( c => c.numPlate);
+    this.cars.filter(c => c.numPlate == "AA000AA");
   }
 
   onAction(object:any) {
     this.reservation.car = object.row.numPlate;
     if(this.reservationId == null) {
-      this.reservationsService.addReservation(this.reservation).subscribe(() => this.router.navigate(['/reservations']));;
+      this.reservationsService.addReservation(this.reservation).subscribe(() => this.router.navigate(['/reservations']));
     } else {
-      this.reservationsService.updateReservation(this.reservation).subscribe(() => this.router.navigate(['/reservations']));;
+      this.reservationsService.updateReservation(this.reservation).subscribe(() => this.router.navigate(['/reservations']));
     }
   }
 }

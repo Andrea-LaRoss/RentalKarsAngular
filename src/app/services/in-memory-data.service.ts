@@ -22,12 +22,12 @@ export class InMemoryDataService {
     ];
 
     let users: User[] = [
-      {id: 1, email: "test@test.com", firstName: "Andrea", lastName: "La Rosa", password: "", birthday:"1997-02-01"},
-      {id: 2, email: "aldogiovanni@outlook.it", firstName: "John", lastName: "Pieri", password: "", birthday:"1997-02-01"},
-      {id: 3, email: "egiacomo@hotmail.com", firstName: "Al", lastName: "Bauli", password: "", birthday:"1997-02-01"},
-      {id: 4, email: "theripper@gmail.com", firstName: "Jack", lastName: "Raiden", password: "", birthday:"1997-02-01"},
-      {id: 5, email: "user@mock.com", firstName: "Mock", lastName: "User", password: "", birthday:"1997-02-01"},
-      {id: 6, email: "bridges@unites.com", firstName: "Sam", lastName: "Porter", password: "", birthday:"1997-02-01"},
+      {id: 1, email: "test@test.com", firstName: "Andrea", lastName: "La Rosa", password: "", birthday:"1997-02-01", role: "role"},
+      {id: 2, email: "aldogiovanni@outlook.it", firstName: "John", lastName: "Pieri", password: "", birthday:"1997-02-01", role: "USER"},
+      {id: 3, email: "egiacomo@hotmail.com", firstName: "Al", lastName: "Bauli", password: "", birthday:"1997-02-01", role: "USER"},
+      {id: 4, email: "theripper@gmail.com", firstName: "Jack", lastName: "Raiden", password: "", birthday:"1997-02-01", role: "USER"},
+      {id: 5, email: "user@mock.com", firstName: "Mock", lastName: "User", password: "", birthday:"1997-02-01", role: "USER"},
+      {id: 6, email: "bridges@unites.com", firstName: "Sam", lastName: "Porter", password: "", birthday:"1997-02-01", role: "USER"},
     ];
 
     let reservations: Reservations[] = [
