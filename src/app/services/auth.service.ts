@@ -9,24 +9,13 @@ import {HttpClient} from "@angular/common/http";
 })
 export class AuthService {
 
-  url = "/api/login";
+  private loginUrl = "api/users";
 
   constructor(private userService: UsersService, private http: HttpClient) { }
 
 
   login (email: string, password: string): Observable<User> {
-
-    return this.http.post<User>( this.url, {email, password});
-    /*const retVal = (email === 'test@test.com' || email === 'user@mock.com');
-
-    if(retVal && email === 'test@test.com') {
-      sessionStorage.setItem("Utente", email);
-      sessionStorage.setItem("Ruolo", "ADMIN");
-    } else {
-      sessionStorage.setItem("Utente", email);
-      sessionStorage.setItem("Ruolo", "User");
-    }*/
-
+    return this.http.post<User>( this.loginUrl, {email, password});
   }
 
 
