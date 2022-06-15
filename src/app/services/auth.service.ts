@@ -14,8 +14,18 @@ export class AuthService {
   constructor(private userService: UsersService, private http: HttpClient) { }
 
 
-  login (email: string, password: string): Observable<User> {
-    return this.http.post<User>( this.loginUrl, {email, password});
+  login (email: string, password: string): boolean {
+    const retVal = (email === 'test@test.com' || email === 'user@mock.com');
+
+    if(retVal && email === 'test@test.com') {
+      sessionStorage.setItem("Utente", email);
+      sessionStorage.setItem("Ruolo", "ADMIN");
+    } else {
+      sessionStorage.setItem("Utente", email);
+      sessionStorage.setItem("Ruolo", "USER");
+    }
+
+    return retVal;
   }
 
 
@@ -24,5 +34,11 @@ export class AuthService {
   isLogged = () : boolean => !!(sessionStorage.getItem("Utente"));
 
   isAdmin = () : boolean => (sessionStorage.getItem("Ruolo") === "ADMIN");
+
+  isUser = () : boolean => (sessionStorage.getItem("Ruolo") === "USER");
+
+  logout() {
+    sessionStorage.clear();
+  }
 
 }

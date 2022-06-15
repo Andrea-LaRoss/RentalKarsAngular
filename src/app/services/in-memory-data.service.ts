@@ -22,7 +22,7 @@ export class InMemoryDataService {
     ];
 
     let users: User[] = [
-      {id: 1, email: "test@test.com", firstName: "Andrea", lastName: "La Rosa", password: "1234", birthday:"1997-02-01", role: "role"},
+      {id: 1, email: "test@test.com", firstName: "Andrea", lastName: "La Rosa", password: "1234", birthday:"1997-02-01", role: "ADMIN"},
       {id: 2, email: "aldogiovanni@outlook.it", firstName: "John", lastName: "Pieri", password: "", birthday:"1997-02-01", role: "USER"},
       {id: 3, email: "egiacomo@hotmail.com", firstName: "Al", lastName: "Bauli", password: "", birthday:"1997-02-01", role: "USER"},
       {id: 4, email: "theripper@gmail.com", firstName: "Jack", lastName: "Raiden", password: "", birthday:"1997-02-01", role: "USER"},
