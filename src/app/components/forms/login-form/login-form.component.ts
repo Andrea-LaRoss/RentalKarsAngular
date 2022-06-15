@@ -25,8 +25,8 @@ export class LoginFormComponent implements OnInit {
   }
 
   validateUser(login: any) {
-    if(this.authService.login(login.email, login.password)) {
-      console.log(this.authService.login(login.email, login.password));
+    if(this.authJWT.autenticaService(login.email, login.password)) {
+      console.log(this.authJWT.autenticaService(login.email, login.password));
       this.router.navigate(['/']);
     }
   }

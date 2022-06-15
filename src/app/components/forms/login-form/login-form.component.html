@@ -4,7 +4,7 @@
 </div>
 
 <div class="container">
-  <form #login="ngForm" (ngSubmit)="validateUser(login.value)">
+  <form #login="ngForm" (ngSubmit)="gestAuth()">
     <div class="form-group">
       <div class="form-floating mb-4">
         <input type="email" class="form-control" [(ngModel)]="model['email']" name="email" id="email" required>

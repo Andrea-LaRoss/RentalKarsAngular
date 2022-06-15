@@ -2,30 +2,20 @@ import { Injectable } from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from "@angular/router";
 import {AuthJWTService} from "./authJWT.service";
 import {JwtHelperService} from "@auth0/angular-jwt";
+import {JWTRolesService} from "./jwtroles.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class RouteGuardService implements CanActivate{
 
-  token: string = '';
   ruoli: string[] = [];
-  items: any;
+
+  constructor(private authService: AuthJWTService, private router: Router, private roles: JWTRolesService) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
 
-    this.token = this.authService.getAuthToken();
-
-    const helper = new JwtHelperService();
-    const decodedToken = helper.decodeToken(this.token);
-
-    this.items = decodedToken['role'];
-
-    if(!Array.isArray(this.items)) {
-      this.ruoli.push(this.items);
-    } else {
-      this.ruoli = this.items;
-    }
+    this.ruoli = this.roles.getRoles();
 
     if(!this.authService.isLogged()){
 
@@ -50,5 +40,4 @@ export class RouteGuardService implements CanActivate{
 
   }
 
-  constructor(private authService: AuthJWTService, private router: Router) { }
 }
