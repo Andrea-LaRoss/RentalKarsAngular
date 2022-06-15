@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
-import { HttpClientModule } from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { HttpClientInMemoryWebApiModule } from "angular-in-memory-web-api";
 
 import { AppComponent } from './app.component';
@@ -20,6 +20,7 @@ import { CarFormComponent } from './components/forms/car-form/car-form.component
 import { InMemoryDataService } from "./services/in-memory-data.service";
 import { LoginFormComponent } from './components/forms/login-form/login-form.component';
 import { RouteGuardService } from "./services/route-guard.service";
+import {AuthInterceptorService} from "./services/auth-interceptor.service";
 
 
 @NgModule({
@@ -59,7 +60,9 @@ import { RouteGuardService } from "./services/route-guard.service";
       {path: 'login_form', component: LoginFormComponent}],
     )
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

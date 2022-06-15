@@ -1,33 +1,37 @@
 import { Injectable } from '@angular/core';
 import { UsersService } from "./users.service";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { map } from "rxjs";
+import { environment } from "../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private userService: UsersService) { }
+  server: string = environment.server;
+  port : string = environment.port;
 
+  constructor(private http: HttpClient) {}
 
-  login (email: string, password: string): boolean {
-    const retVal = (email === 'test@test.com' || email === 'user@mock.com');
+  autenticaService(email: string, password: string) {
 
-    if(retVal && email === 'test@test.com') {
-      sessionStorage.setItem("Utente", email);
-      sessionStorage.setItem("Ruolo", "ADMIN");
-    } else {
-      sessionStorage.setItem("Utente", email);
-      sessionStorage.setItem("Ruolo", "User");
-    }
+    let AuthString: string = "Basic " + window.btoa(email + ":" + password);
 
-    return retVal;
+    let headers = new HttpHeaders(
+      {Authorization: AuthString}
+    )
+
+    return this.http.get<any>(
+      'http://' + this.server + ":" + this.port, {headers}).pipe(
+        map(
+          data => {
+            sessionStorage.setItem("Utente", email);
+            sessionStorage.setItem("AuthToken", AuthString);
+
+            return data;
+          }
+        )
+    )
   }
-
-
-  loggedUser = () : string | null => (sessionStorage.getItem("Utente")) ? sessionStorage.getItem("Utente") : "";
-
-  isLogged = () : boolean => !!(sessionStorage.getItem("Utente"));
-
-  isAdmin = () : boolean => (sessionStorage.getItem("Ruolo") === "ADMIN");
-
 }

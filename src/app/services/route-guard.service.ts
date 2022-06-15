@@ -10,10 +10,11 @@ export class RouteGuardService implements CanActivate{
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
 
     if(!this.authService.isLogged()){
-      this.router.navigate(['/']);
+      this.router.navigate(['/login_form']);
+      return false;
+    } else {
+      return true;
     }
-
-    return this.authService.isLogged();
 
   }
 
