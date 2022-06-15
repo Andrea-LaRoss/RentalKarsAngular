@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { catchError, Observable, of, tap } from "rxjs";
-import { Car } from "../interfaces/car";
+import { Car } from "../models/car";
 
 @Injectable({
   providedIn: 'root'

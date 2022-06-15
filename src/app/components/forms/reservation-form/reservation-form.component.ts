@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 
 import { ReservationsService } from "../../../services/reservations.service";
-import { Car } from "../../../interfaces/car";
+import { Car } from "../../../models/car";
 import { Actions, TableConfig } from "../../templates/table-template/config/table-config";
 import { ActionsEnum } from "../../templates/table-template/config/actions-enum";
 import { TableHeaders } from "../../templates/table-template/config/table-headers";

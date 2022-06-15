@@ -7,7 +7,7 @@ import { TableHeaders } from "../../templates/table-template/config/table-header
 import { OrderTable } from "../../templates/table-template/config/order-table";
 import { SearchParams } from "../../templates/table-template/config/search-params";
 import { TablePagination } from "../../templates/table-template/config/table-pagination";
-import { Reservations } from "../../../interfaces/reservations";
+import { Reservations } from "../../../models/reservations";
 
 import { ReservationsService } from "../../../services/reservations.service";
 

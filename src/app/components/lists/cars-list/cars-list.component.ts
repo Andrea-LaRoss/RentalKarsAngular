@@ -7,7 +7,7 @@ import { SearchParams } from "../../templates/table-template/config/search-param
 import { Actions, TableConfig } from "../../templates/table-template/config/table-config";
 import { TablePagination } from "../../templates/table-template/config/table-pagination";
 import { ActionsEnum } from "../../templates/table-template/config/actions-enum";
-import { Car } from "../../../interfaces/car";
+import { Car } from "../../../models/car";
 import { CarsService } from "../../../services/cars.service";
 
 @Component({

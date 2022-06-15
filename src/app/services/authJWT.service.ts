@@ -3,11 +3,12 @@ import { UsersService } from "./users.service";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { map } from "rxjs";
 import { environment } from "../environments/environment";
+import {Token} from "../models/token";
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class AuthJWTService {
 
   server: string = environment.server;
   port : string = environment.port;
@@ -22,12 +23,12 @@ export class AuthService {
       {Authorization: AuthString}
     )
 
-    return this.http.get<any>(
-      'http://' + this.server + ":" + this.port, {headers}).pipe(
+    return this.http.post<Token>(
+      environment.authServerUri, {email, password}).pipe(
         map(
           data => {
             sessionStorage.setItem("Utente", email);
-            sessionStorage.setItem("AuthToken", AuthString);
+            sessionStorage.setItem("AuthToken", 'Bearer ' + data.token);
 
             return data;
           }

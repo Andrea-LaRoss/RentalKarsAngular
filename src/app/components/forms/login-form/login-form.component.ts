@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UsersService} from "../../../services/users.service";
 import {AuthService} from "../../../services/auth.service";
 import {Router} from "@angular/router";
+import {AuthJWTService} from "../../../services/authJWT.service";
 
 @Component({
   selector: 'app-login-form',
@@ -14,7 +15,11 @@ export class LoginFormComponent implements OnInit {
 
   user: any = {};
 
-  constructor(private router: Router, private userService: UsersService, private authService: AuthService) { }
+  email : string = "";
+  password: string = "";
+  autenticato: boolean = false;
+
+  constructor(private router: Router, private userService: UsersService, private authService: AuthService ,private authJWT: AuthJWTService) { }
 
   ngOnInit(): void {
   }
@@ -26,4 +31,19 @@ export class LoginFormComponent implements OnInit {
     }
   }
 
+  gestAuth = (): void => {
+    console.log(this.email);
+    this.authJWT.autenticaService(this.email, this.password).subscribe({
+      next: (response) => {
+        console.log(response);
+
+        this.autenticato = true;
+        this.router.navigate(['/']);
+      },
+      error: (error) => {
+        console.log(error);
+        this.autenticato = false;
+      }
+    });
+  }
 }
