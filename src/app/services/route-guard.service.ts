@@ -25,7 +25,7 @@ export class RouteGuardService implements CanActivate{
     } else {
 
       let roles: string[] = [];
-      roles = route.data['roles'];
+      roles = ['ADMIN'];//route.data['roles'];
 
       if(roles === null || roles.length === 0) {
         return true;

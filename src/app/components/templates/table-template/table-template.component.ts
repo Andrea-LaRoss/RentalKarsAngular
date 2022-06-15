@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TableConfig } from "./config/table-config";
 import { ActionsEnum } from "./config/actions-enum";
-import {AuthService} from "../../../services/auth.service";
+import {AuthJWTService} from "../../../services/authJWT.service";
 
 @Component({
   selector: 'app-table-template',
@@ -28,7 +28,7 @@ export class TableTemplateComponent implements OnInit {
   maxPage!: number;
 
 
-  constructor(public authService: AuthService) {}
+  constructor(public authService: AuthJWTService) {}
 
   ngOnInit(): void {
     this.changeOrder(this.data, this.tableConfig.order.defaultColumn, this.tableConfig.order.orderType);

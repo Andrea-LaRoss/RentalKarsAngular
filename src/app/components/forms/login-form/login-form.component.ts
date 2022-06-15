@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {UsersService} from "../../../services/users.service";
-import {AuthService} from "../../../services/auth.service";
-import {Router} from "@angular/router";
-import {AuthJWTService} from "../../../services/authJWT.service";
+import { Router } from "@angular/router";
+import { AuthJWTService } from "../../../services/authJWT.service";
 
 @Component({
   selector: 'app-login-form',
@@ -11,25 +9,13 @@ import {AuthJWTService} from "../../../services/authJWT.service";
 })
 export class LoginFormComponent implements OnInit {
 
-  model: any = {};
-
-  user: any = {};
-
   email : string = "";
   password: string = "";
   autenticato: boolean = false;
 
-  constructor(private router: Router, private userService: UsersService, private authService: AuthService ,private authJWT: AuthJWTService) { }
+  constructor(private router: Router,private authJWT: AuthJWTService) { }
 
-  ngOnInit(): void {
-  }
-
-  validateUser(login: any) {
-    if(this.authJWT.autenticaService(login.email, login.password)) {
-      console.log(this.authJWT.autenticaService(login.email, login.password));
-      this.router.navigate(['/']);
-    }
-  }
+  ngOnInit(): void {}
 
   gestAuth = (): void => {
     console.log(this.email);

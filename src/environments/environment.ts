@@ -7,7 +7,7 @@ export const environment = {
   server: "localhost",
   port: "4200",
 
-  authServerUri: "http://localhost:4200/auth",
+  authServerUri: "http://localhost:4200/api/users",
 };
 
 /*
