@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
-import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { HttpClientInMemoryWebApiModule } from "angular-in-memory-web-api";
-
 import { AppComponent } from './app.component';
+
 import { ConfigurableButtonComponent } from './components/templates/button-template/configurable-button.component';
 import { HeaderComponent } from './components/templates/header/header.component';
 import { TableTemplateComponent } from './components/templates/table-template/table-template.component';
@@ -20,7 +20,8 @@ import { CarFormComponent } from './components/forms/car-form/car-form.component
 import { InMemoryDataService } from "./services/in-memory-data.service";
 import { LoginFormComponent } from './components/forms/login-form/login-form.component';
 import { RouteGuardService } from "./services/route-guard.service";
-import {AuthInterceptorService} from "./services/auth-interceptor.service";
+import { AuthInterceptorService } from "./services/auth-interceptor.service";
+import { Ruoli } from "./models/ruoli";
 
 
 @NgModule({
@@ -48,15 +49,15 @@ import {AuthInterceptorService} from "./services/auth-interceptor.service";
     RouterModule.forRoot([
       {path: '', component: HomepageComponent},
       {path: 'cars', component: CarsListComponent, canActivate: [RouteGuardService]},
-      {path: 'users', component: UsersListComponent, canActivate: [RouteGuardService]},
-      {path: 'reservations', component: RentListComponent, canActivate: [RouteGuardService]},
-      {path: 'dashboard', component: DashboardComponent, canActivate: [RouteGuardService]},
-      {path: 'user_form', component: UserFormComponent},
-      {path: 'reservation_form', component: ReservationFormComponent, canActivate: [RouteGuardService]},
-      {path: 'car_form', component: CarFormComponent, canActivate: [RouteGuardService]},
-      {path: 'car_form/:carId', component: CarFormComponent, canActivate: [RouteGuardService]},
-      {path: 'user_form/:userId', component: UserFormComponent, canActivate: [RouteGuardService]},
-      {path: 'reservation_form/:reservationId', component: ReservationFormComponent, canActivate: [RouteGuardService]},
+      {path: 'users', component: UsersListComponent, canActivate: [RouteGuardService], data: {roles: [Ruoli.amministratore]}},
+      {path: 'reservations', component: RentListComponent, canActivate: [RouteGuardService], data: {roles: [Ruoli.utente]}},
+      {path: 'dashboard', component: DashboardComponent, canActivate: [RouteGuardService], data: {roles: [Ruoli.utente]}},
+      {path: 'user_form', component: UserFormComponent, data: {roles: [Ruoli.utente]}},
+      {path: 'reservation_form', component: ReservationFormComponent, canActivate: [RouteGuardService], data: {roles: [Ruoli.utente]}},
+      {path: 'car_form', component: CarFormComponent, canActivate: [RouteGuardService], data: {roles: [Ruoli.amministratore]}},
+      {path: 'car_form/:carId', component: CarFormComponent, canActivate: [RouteGuardService], data: {roles: [Ruoli.amministratore]}},
+      {path: 'user_form/:userId', component: UserFormComponent, canActivate: [RouteGuardService], data: {roles: [Ruoli.utente]}},
+      {path: 'reservation_form/:reservationId', component: ReservationFormComponent, canActivate: [RouteGuardService], data: {roles: [Ruoli.utente]}},
       {path: 'login_form', component: LoginFormComponent}],
     )
   ],

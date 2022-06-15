@@ -35,4 +35,29 @@ export class AuthJWTService {
         )
     )
   }
+
+  loggedUser = () : string | null => (sessionStorage.getItem("Utente")) ? sessionStorage.getItem("Utente") : "";
+
+  isLogged = () : boolean => !!(sessionStorage.getItem("Utente"));
+
+  isAdmin = () : boolean => (sessionStorage.getItem("Ruolo") === "ADMIN");
+
+  isUser = () : boolean => (sessionStorage.getItem("Ruolo") === "USER");
+
+  logout() {
+    sessionStorage.clear();
+  }
+
+  getAuthToken = () : string => {
+
+    let AuthHeader: string = "";
+    var AuthToken = sessionStorage.getItem("AuthToken");
+
+    if(AuthToken != null) {
+      AuthHeader = AuthToken;
+    }
+
+    return AuthHeader;
+
+  }
 }
