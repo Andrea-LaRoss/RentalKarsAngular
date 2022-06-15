@@ -19,6 +19,7 @@ import { ReservationFormComponent } from './components/forms/reservation-form/re
 import { CarFormComponent } from './components/forms/car-form/car-form.component';
 import { InMemoryDataService } from "./services/in-memory-data.service";
 import { LoginFormComponent } from './components/forms/login-form/login-form.component';
+import { RouteGuardService } from "./services/route-guard.service";
 
 
 @NgModule({
@@ -45,16 +46,16 @@ import { LoginFormComponent } from './components/forms/login-form/login-form.com
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation: false}),
     RouterModule.forRoot([
       {path: '', component: HomepageComponent},
-      {path: 'cars', component: CarsListComponent},
-      {path: 'users', component: UsersListComponent},
-      {path: 'reservations', component: RentListComponent},
-      {path: 'dashboard', component: DashboardComponent},
+      {path: 'cars', component: CarsListComponent, canActivate: [RouteGuardService]},
+      {path: 'users', component: UsersListComponent, canActivate: [RouteGuardService]},
+      {path: 'reservations', component: RentListComponent, canActivate: [RouteGuardService]},
+      {path: 'dashboard', component: DashboardComponent, canActivate: [RouteGuardService]},
       {path: 'user_form', component: UserFormComponent},
-      {path: 'reservation_form', component: ReservationFormComponent},
-      {path: 'car_form', component: CarFormComponent},
-      {path: 'car_form/:carId', component: CarFormComponent},
-      {path: 'user_form/:userId', component: UserFormComponent},
-      {path: 'reservation_form/:reservationId', component: ReservationFormComponent},
+      {path: 'reservation_form', component: ReservationFormComponent, canActivate: [RouteGuardService]},
+      {path: 'car_form', component: CarFormComponent, canActivate: [RouteGuardService]},
+      {path: 'car_form/:carId', component: CarFormComponent, canActivate: [RouteGuardService]},
+      {path: 'user_form/:userId', component: UserFormComponent, canActivate: [RouteGuardService]},
+      {path: 'reservation_form/:reservationId', component: ReservationFormComponent, canActivate: [RouteGuardService]},
       {path: 'login_form', component: LoginFormComponent}],
     )
   ],
