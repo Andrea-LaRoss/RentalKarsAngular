@@ -49,7 +49,7 @@ export class CarsService {
   }
 
   deleteCar(id: number): Observable<Car> {
-    const url = this.carsUrl + '/' + id;
+    const url = this.carsUrl + '/remove/' + id;
 
     return this.http.delete<Car>(url, this.httpOptions)
       .pipe(tap(_ => this.log('Eliminata auto id: '+ id)), catchError(this.handleError<Car>('deleteCar')));

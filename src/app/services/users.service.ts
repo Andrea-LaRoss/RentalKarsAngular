@@ -52,7 +52,7 @@ export class UsersService {
   }
 
   deleteUser(id: number): Observable<User> {
-    const url = this.usersUrl + '/' + id;
+    const url = this.usersUrl + '/remove/' + id;
 
     return this.http.delete<User>(url, this.httpOptions)
       .pipe(tap(_ => this.log('Eliminato utente id: ' + id)), catchError(this.handleError<User>('deleteUser')));

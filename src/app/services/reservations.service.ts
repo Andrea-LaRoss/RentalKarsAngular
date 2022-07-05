@@ -51,7 +51,7 @@ export class ReservationsService {
   }
 
   deleteReservation(id: number): Observable<Reservations> {
-    const url = this.reservationsUrl + '/' + id;
+    const url = this.reservationsUrl + '/remove/' + id;
 
     return this.http.delete<Reservations>(url, this.httpOptions)
       .pipe(tap(_ => this.log('Eliminata prenotazione id: '+ id)), catchError(this.handleError<Reservations>('deleteReservation')));
