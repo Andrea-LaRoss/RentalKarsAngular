@@ -8,7 +8,7 @@ import { Car } from "../models/car";
 })
 export class CarsService {
 
-  private carsUrl = 'api/cars';
+  private carsUrl = 'http://localhost:8080/api/cars';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json'})

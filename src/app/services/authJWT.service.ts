@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { map } from "rxjs";
+import {catchError, map, Observable, tap} from "rxjs";
 import { environment } from "../../environments/environment";
 import { Token } from "../models/token";
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
@@ -12,22 +13,20 @@ export class AuthJWTService {
   server: string = environment.server;
   port : string = environment.port;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private jwtHelper: JwtHelperService) {}
 
   autenticaService(email: string, password: string) {
-
     return this.http.post<Token>(
-      environment.authServerUri, {email, password}).pipe(
-        map(
-          data => {
-            sessionStorage.setItem("Utente", email);
-            sessionStorage.setItem("AuthToken", 'Bearer ' + data.token);
-            console.log(data);
-
-            return data;
-          }
-        )
-    )
+     "http://localhost:8080/api/auth", {email, password}).pipe(
+       map(
+         data => {
+           const decoded = this.jwtHelper.decodeToken(data.token);
+           sessionStorage.setItem("AuthToken", "Bearer " + data.token);
+           sessionStorage.setItem("Utente",decoded.sub);
+           sessionStorage.setItem("Ruolo",decoded.role);
+         }
+       )
+    );
   }
 
   loggedUser = () : string | null => (sessionStorage.getItem("Utente")) ? sessionStorage.getItem("Utente") : "";
@@ -38,9 +37,7 @@ export class AuthJWTService {
 
   isUser = () : boolean => (sessionStorage.getItem("Ruolo") === "USER");
 
-  logout() {
-    sessionStorage.clear();
-  }
+  logout() { sessionStorage.clear(); }
 
   getAuthToken = () : string => {
 

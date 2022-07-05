@@ -10,7 +10,7 @@ import { Car } from "../models/car";
 })
 export class ReservationsService {
 
-  private reservationsUrl = 'api/reservations';
+  private reservationsUrl = 'http://localhost:8080/api/reservations';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json'})

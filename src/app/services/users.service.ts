@@ -9,7 +9,7 @@ import { User } from "../models/user";
 })
 export class UsersService {
 
-  private usersUrl = 'api/users';
+  private usersUrl = 'http://localhost:8080/api/users';
 
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -40,11 +40,6 @@ export class UsersService {
       .pipe(tap(_ => this.log('Utente estratto id: ' + id)), catchError(this.handleError<User>('getUser id=' + id)));
   }
 
-  getUserValidate(email: string): Observable<User> {
-    const url = this.usersUrl + '/email=' + email;
-    return this.http.get<User>(url)
-      .pipe(tap(_ => this.log('Utente estratto email: ' + email)), catchError(this.handleError<User>('getUser email=' + email)));
-  }
 
   updateUser(user: User): Observable<any> {
     return this.http.put(this.usersUrl, user, this.httpOptions)
