@@ -33,18 +33,18 @@ export class CarsService {
   }
 
   getCar(id: number): Observable<Car> {
-    const url = this.carsUrl + '/' + id;
+    const url = this.carsUrl + '/load/' + id;
     return this.http.get<Car>(url)
       .pipe(tap(_ => this.log('Auto estratta id: '+ id)), catchError(this.handleError<Car>('getCar id='+ id)));
   }
 
   updateCar(car: Car): Observable<any> {
-    return this.http.put(this.carsUrl, car, this.httpOptions)
+    return this.http.put(this.carsUrl + '/add', car, this.httpOptions)
       .pipe(tap(_ => this.log('Aggiorna Auto id: ' + car.id)), catchError(this.handleError<any>('updateCar')));
   }
 
   addCar(car: Car): Observable<Car> {
-    return this.http.post<Car>(this.carsUrl, car, this.httpOptions)
+    return this.http.post<Car>(this.carsUrl + '/add', car, this.httpOptions)
       .pipe(tap((newCar: Car) => this.log('Auto aggiunta con id: '+ newCar.id)), catchError(this.handleError<Car>('addCar')));
   }
 

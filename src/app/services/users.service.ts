@@ -35,19 +35,19 @@ export class UsersService {
   }
 
   getUser(id: number): Observable<User> {
-    const url = this.usersUrl + '/' + id;
+    const url = this.usersUrl + '/load/' + id;
     return this.http.get<User>(url)
       .pipe(tap(_ => this.log('Utente estratto id: ' + id)), catchError(this.handleError<User>('getUser id=' + id)));
   }
 
 
   updateUser(user: User): Observable<any> {
-    return this.http.put(this.usersUrl, user, this.httpOptions)
+    return this.http.post<User>(this.usersUrl + '/add', user, this.httpOptions)
       .pipe(tap(_ => this.log('Aggiorna Utente id: ' + user.id)), catchError(this.handleError<any>('updateUser')));
   }
 
   addUser(user: User): Observable<User> {
-    return this.http.post<User>(this.usersUrl, user, this.httpOptions)
+    return this.http.post<User>(this.usersUrl + '/add', user, this.httpOptions)
       .pipe(tap((newUser: User) => this.log('Utente aggiunto con id: ' + newUser.id)), catchError(this.handleError<User>('addUser')));
   }
 

@@ -3,7 +3,6 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { catchError, Observable, of, tap } from "rxjs";
 
 import { Reservations } from "../models/reservations";
-import { Car } from "../models/car";
 
 @Injectable({
   providedIn: 'root'
@@ -35,18 +34,18 @@ export class ReservationsService {
   }
 
   getReservation(id: number): Observable<Reservations> {
-    const url = this.reservationsUrl + '/' + id;
+    const url = this.reservationsUrl + '/load/' + id;
     return this.http.get<Reservations>(url)
       .pipe(tap(_ => this.log('Prenotazione estratta id: '+ id)), catchError(this.handleError<Reservations>('getReservation id='+ id)));
   }
 
   updateReservation(reservation: Reservations): Observable<any> {
-    return this.http.put(this.reservationsUrl, reservation, this.httpOptions)
+    return this.http.put(this.reservationsUrl + "/add", reservation, this.httpOptions)
       .pipe(tap(_ => this.log('Aggiorna Prenotazione id: ' + reservation.id)), catchError(this.handleError<any>('updateReservation')));
   }
 
   addReservation(reservation: Reservations): Observable<Reservations> {
-    return this.http.post<Reservations>(this.reservationsUrl, reservation, this.httpOptions)
+    return this.http.post<Reservations>(this.reservationsUrl + "/add", reservation, this.httpOptions)
       .pipe(tap((newReservation: Reservations) => this.log('Prenotazione aggiunta con id: '+ newReservation.id)), catchError(this.handleError<Reservations>('addReservation')));
   }
 
